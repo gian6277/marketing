@@ -3,764 +3,459 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bienvenidos/as a Photoshop CS6</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Informática Aplicada I — CTT Marketing 2019</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f7f4ef;
-  --negro: #111010;
-  --acento: #d94f2b;
-  --acento2: #2b6dd9;
-  --amarillo: #f0c419;
-  --gris: #6b6560;
-  --gris-claro: #e8e3db;
+  --negro: #111111;
   --blanco: #ffffff;
-  --verde: #2a7a4b;
+  --rojo: #cc1a1a;
+  --rojo-suave: #fdf2f2;
+  --gris: #666;
+  --gris-claro: #eeeeee;
+  --borde: #e0e0e0;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
+  background: var(--blanco);
   color: var(--negro);
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 17px;
-  line-height: 1.75;
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
 }
 
-/* NAV */
-.topbar {
-  background: var(--negro);
-  color: #aaa;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  padding: 10px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  letter-spacing: 0.05em;
-}
-.topbar a { color: var(--amarillo); text-decoration: none; }
-.topbar-links { display: flex; gap: 20px; }
-.topbar-links a { color: #aaa; text-decoration: none; transition: color 0.2s; }
-.topbar-links a:hover { color: var(--amarillo); }
-
-/* HERO */
-.hero {
-  background: var(--negro);
-  color: var(--blanco);
-  padding: 72px 40px 56px;
+/* HEADER */
+header {
+  background: var(--blanco);
+  padding: 64px 56px 52px;
+  border-bottom: 3px solid var(--negro);
   position: relative;
   overflow: hidden;
 }
-.hero::after {
-  content: '01';
+header::before {
+  content: 'CTT Marketing';
   position: absolute;
-  right: 32px;
-  bottom: -40px;
+  right: -8px;
+  bottom: 16px;
   font-family: 'Syne', sans-serif;
-  font-size: 220px;
+  font-size: 96px;
   font-weight: 800;
-  color: rgba(255,255,255,0.04);
+  color: rgba(200, 20, 20, 0.07);
   line-height: 1;
   pointer-events: none;
-}
-.clase-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--acento);
-  color: var(--blanco);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  padding: 5px 14px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-.hero h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(36px, 5vw, 62px);
-  font-weight: 800;
-  line-height: 1.05;
-  max-width: 680px;
-  margin-bottom: 16px;
-}
-.hero h1 em { color: var(--amarillo); font-style: normal; }
-.hero-sub {
-  color: #aaa;
-  font-size: 16px;
-  font-weight: 300;
-  max-width: 520px;
-  font-family: 'Source Serif 4', serif;
-  font-style: italic;
-}
-.hero-meta {
-  display: flex;
-  gap: 32px;
-  margin-top: 40px;
-  flex-wrap: wrap;
-}
-.hm {
-  border-top: 2px solid var(--acento);
-  padding-top: 8px;
-  min-width: 100px;
-}
-.hm-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 0.1em; }
-.hm-val { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--blanco); margin-top: 2px; }
-
-/* ÍNDICE */
-.indice-wrap {
-  background: var(--gris-claro);
-  border-left: 4px solid var(--acento);
-  padding: 28px 32px;
-  margin: 48px 40px;
-}
-.indice-wrap h3 {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--gris);
-  margin-bottom: 12px;
-}
-.indice-wrap ol {
-  padding-left: 20px;
-}
-.indice-wrap ol li {
-  margin-bottom: 4px;
-}
-.indice-wrap a {
-  color: var(--acento2);
-  text-decoration: none;
-  font-size: 15px;
-  font-family: 'Source Serif 4', serif;
-  transition: color 0.2s;
-}
-.indice-wrap a:hover { color: var(--acento); text-decoration: underline; }
-
-/* CONTENT */
-.content {
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 0 40px 100px;
-}
-
-/* SECCIONES */
-.seccion {
-  margin-top: 64px;
-}
-.seccion-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--acento);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 6px;
-}
-.seccion h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--negro);
-  border-bottom: 3px solid var(--negro);
-  padding-bottom: 10px;
-  margin-bottom: 24px;
-}
-.seccion h3 {
-  font-family: 'Syne', sans-serif;
-  font-size: 19px;
-  font-weight: 600;
-  color: var(--negro);
-  margin: 28px 0 10px;
-}
-.seccion p { margin-bottom: 16px; color: #2a2520; }
-
-/* CALLOUT */
-.callout {
-  border-left: 4px solid var(--acento2);
-  background: #eef3fd;
-  padding: 16px 20px;
-  margin: 24px 0;
-  border-radius: 0 4px 4px 0;
-}
-.callout.amarillo { border-color: var(--amarillo); background: #fffbea; }
-.callout.verde { border-color: var(--verde); background: #edf7f1; }
-.callout.rojo { border-color: var(--acento); background: #fdeee9; }
-.callout-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--acento2);
-  margin-bottom: 6px;
-  font-weight: 700;
-}
-.callout.amarillo .callout-label { color: #9a7000; }
-.callout.verde .callout-label { color: var(--verde); }
-.callout.rojo .callout-label { color: var(--acento); }
-.callout p { margin-bottom: 0; font-size: 15px; }
-
-/* TABLA DE ATAJOS */
-.atajos-tabla {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0 32px;
-  font-size: 14px;
-}
-.atajos-tabla thead tr {
-  background: var(--negro);
-  color: var(--blanco);
-}
-.atajos-tabla thead th {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 10px 14px;
-  text-align: left;
-}
-.atajos-tabla tbody tr:nth-child(even) { background: var(--gris-claro); }
-.atajos-tabla tbody tr:hover { background: #e0dbd3; }
-.atajos-tabla td {
-  padding: 9px 14px;
-  border-bottom: 1px solid #ddd;
-  vertical-align: middle;
-}
-.atajos-tabla td:first-child {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
-}
-kbd {
-  display: inline-block;
-  background: var(--negro);
-  color: var(--amarillo);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  padding: 2px 8px;
-  border-radius: 3px;
-  border-bottom: 2px solid #444;
+  user-select: none;
   white-space: nowrap;
 }
 
-/* LISTA */
-ul.ul-custom {
-  list-style: none;
-  padding: 0;
-  margin: 16px 0 24px;
+.breadcrumb {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gris);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
-ul.ul-custom li {
-  padding: 8px 0 8px 24px;
-  position: relative;
-  border-bottom: 1px solid var(--gris-claro);
-  font-size: 15.5px;
-}
-ul.ul-custom li:last-child { border-bottom: none; }
-ul.ul-custom li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--acento);
-  font-size: 13px;
-}
+.breadcrumb span { color: var(--rojo); }
 
-/* CONCEPTO BOX */
-.concepto {
-  background: var(--negro);
-  color: var(--blanco);
-  padding: 22px 24px;
-  margin: 20px 0;
-}
-.concepto-titulo {
+h1 {
   font-family: 'Syne', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--amarillo);
-  margin-bottom: 8px;
-  letter-spacing: 0.02em;
-}
-.concepto p { color: #ccc; font-size: 14.5px; margin-bottom: 0; line-height: 1.65; }
-
-/* INTERFAZ DIAGRAM */
-.interfaz-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin: 20px 0;
-}
-.interfaz-item {
-  background: var(--blanco);
-  border: 1px solid var(--gris-claro);
-  padding: 14px 16px;
-}
-.ii-nombre {
-  font-family: 'Syne', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: clamp(36px, 5.5vw, 70px);
+  font-weight: 800;
+  line-height: 1.0;
+  max-width: 700px;
+  margin-bottom: 20px;
   color: var(--negro);
-  margin-bottom: 4px;
 }
-.ii-desc { font-size: 13px; color: var(--gris); line-height: 1.5; }
-.ii-atajo {
+h1 em {
+  color: var(--rojo);
+  font-style: normal;
+}
+
+.header-desc {
+  color: var(--gris);
+  font-size: 16px;
+  font-weight: 300;
+  max-width: 500px;
+  line-height: 1.65;
+  margin-bottom: 40px;
+}
+
+.header-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pill {
+  border: 1px solid var(--borde);
+  color: var(--gris);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 5px 14px;
+  letter-spacing: 0.06em;
+}
+.pill.act {
+  border-color: var(--rojo);
+  color: var(--rojo);
+  background: var(--rojo-suave);
+}
+
+/* MAIN */
+main {
+  padding: 56px 56px 96px;
+  max-width: 980px;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #aaa;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--borde);
+  max-width: 240px;
+}
+
+/* LISTA DE CLASES */
+.clases-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bloque-titulo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #bbb;
+  padding: 20px 0 10px;
+  border-top: 1px solid var(--borde);
   margin-top: 6px;
 }
+.bloque-titulo:first-child {
+  border-top: none;
+  padding-top: 0;
+}
 
-/* PASO A PASO */
-.pasos {
-  counter-reset: paso;
-  margin: 20px 0;
-}
-.paso {
+.clase-card {
   display: flex;
-  gap: 16px;
-  margin-bottom: 14px;
-  align-items: flex-start;
+  align-items: center;
+  text-decoration: none;
+  color: var(--negro);
+  border: 1px solid var(--borde);
+  background: var(--blanco);
+  transition: all 0.18s ease;
 }
-.paso-n {
-  counter-increment: paso;
-  background: var(--acento);
+.clase-card:hover {
+  border-color: var(--rojo);
+  background: var(--rojo-suave);
+}
+.clase-card:hover .clase-num {
+  background: var(--rojo);
   color: var(--blanco);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  font-weight: 700;
-  min-width: 28px;
-  height: 28px;
+}
+.clase-card:hover .clase-titulo {
+  color: var(--rojo);
+}
+.clase-card:hover .clase-arrow {
+  transform: translateX(5px);
+  color: var(--rojo);
+}
+
+.clase-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  background: var(--gris-claro);
+  color: #aaa;
+  min-width: 72px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-top: 3px;
+  border-right: 1px solid var(--borde);
+  transition: background 0.18s, color 0.18s;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
 }
-.paso p { margin-bottom: 0; font-size: 15px; line-height: 1.6; }
 
-/* EJERCICIO */
-.ejercicio {
-  border: 2px solid var(--negro);
-  margin: 32px 0;
+.clase-info {
+  padding: 0 24px;
+  flex: 1;
 }
-.ejercicio-header {
-  background: var(--negro);
-  color: var(--blanco);
-  padding: 14px 20px;
+.clase-titulo {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 3px;
+  line-height: 1.2;
+  transition: color 0.18s;
+}
+.clase-sub {
+  font-size: 13px;
+  color: #999;
+  font-weight: 300;
+}
+
+.clase-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-.ej-badge {
-  background: var(--acento);
-  color: var(--blanco);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 3px 10px;
+  gap: 16px;
+  padding-right: 24px;
   flex-shrink: 0;
 }
-.ejercicio-header h4 {
-  font-family: 'Syne', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-}
-.ejercicio-body { padding: 20px 20px 24px; }
-.ejercicio-body p { font-size: 15px; margin-bottom: 12px; }
-
-/* ENTREGA */
-.entrega {
-  background: var(--acento2);
-  color: var(--blanco);
-  padding: 16px 22px;
-  margin-top: 16px;
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-}
-.entrega-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
-.entrega-label {
+.clase-tag-soft {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
+  color: #bbb;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 4px;
+  border: 1px solid var(--borde);
+  padding: 3px 9px;
 }
-.entrega p { font-size: 14px; color: rgba(255,255,255,0.9); margin-bottom: 0; }
-.entrega code {
-  background: rgba(0,0,0,0.3);
-  padding: 1px 6px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  border-radius: 2px;
+.clase-arrow {
+  color: #ccc;
+  font-size: 18px;
+  transition: transform 0.18s, color 0.18s;
 }
 
-/* RESUMEN FINAL */
-.resumen {
-  background: var(--amarillo);
-  padding: 28px 32px;
-  margin-top: 48px;
+.clase-card.inactiva {
+  opacity: 0.4;
+  pointer-events: none;
 }
-.resumen h3 {
-  font-family: 'Syne', sans-serif;
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--negro);
-  margin-bottom: 12px;
-}
-.resumen ul { padding-left: 20px; }
-.resumen li { font-size: 14.5px; color: #2a2000; margin-bottom: 4px; }
 
 /* FOOTER */
 footer {
-  background: var(--negro);
-  color: #555;
-  text-align: center;
-  padding: 28px 32px;
+  border-top: 3px solid var(--negro);
+  padding: 28px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: var(--blanco);
+}
+.footer-left {
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
-  letter-spacing: 0.05em;
+  color: #aaa;
+  letter-spacing: 0.06em;
 }
-footer span { color: var(--amarillo); }
+.footer-right {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #ccc;
+}
 
 @media (max-width: 600px) {
-  .hero, .content { padding-left: 20px; padding-right: 20px; }
-  .indice-wrap { margin: 32px 20px; }
-  .interfaz-grid { grid-template-columns: 1fr; }
-  .topbar-links { display: none; }
+  header, main, footer { padding-left: 20px; padding-right: 20px; }
+  .clase-meta { display: none; }
+  .clase-num { min-width: 52px; height: 60px; font-size: 11px; }
+  h1 { font-size: 36px; }
 }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <span><a href="#">CTT Marketing · Informática Aplicada I · Plan 2019</a></span>
-  
-</div>
+<header>
+  <div class="breadcrumb">
+    UTU — DGETP
+    <span>/</span>
+    CTT Marketing
+    <span>/</span>
+    Plan 2019
+    <span></span>
+  </div>
 
-<header class="hero">
- 
-  <h1>Bienvenidos/as a<br><em>Photoshop</em></h1>
-  <p class="hero-sub">CTT Marketing - Informática Aplicada I</p>
-  <div class="hero-meta">
-    <div class="hm"><div class="hm-label">Duración de la clase: </div><div class="hm-val">3 horas</div></div>
-    <div class="hm"><div class="hm-label">Software</div><div class="hm-val">Photoshop CS6</div></div>
+  <h1>Informática<br><em>Aplicada I</em></h1>
+  <p class="header-desc">Materiales de clase para el módulo de herramientas pixelares y vectoriales. Photoshop CS6 + CorelDRAW.</p>
+
+  <div class="header-pills">
+    <div class="pill">Plan 2019</div>
+    <div class="pill">CTT Marketing</div>
+    <div class="pill">Adobe Photoshop CS6</div>
+    <div class="pill">Primer semestre</div>
   </div>
 </header>
 
-<div class="indice-wrap">
-  <h3>Contenidos</h3>
-  <ol>
-    <li><a href="#s1">¿Qué es Photoshop y para qué sirve en Marketing?</a></li>
-    <li><a href="#s2">Conceptos esenciales antes de empezar</a></li>
-    <li><a href="#s3">La interfaz de Photoshop CS6</a></li>
-    <li><a href="#s4">Crear, abrir y guardar documentos</a></li>
-    <li><a href="#s5">Herramientas de pintura y color</a></li>
-    <li><a href="#s6">Atajos de teclado de esta clase</a></li>
-    <li><a href="#s7">Ejercicios</a></li>
-  </ol>
-</div>
+<main>
 
-<main class="content">
+  <div class="section-label">Materiales por clase</div>
 
-<!-- S1 -->
-<section class="seccion" id="s1">
-  <div class="seccion-num">Sección 01</div>
-  <h2>¿Qué es Photoshop y para qué sirve en Marketing?</h2>
+  <div class="clases-lista">
 
-  <p>Adobe Photoshop es el programa de edición de imágenes digitales más usado en el mundo. Fue creado en 1988 y desde entonces es la herramienta estándar en diseño gráfico, publicidad, fotografía y marketing.</p>
+    <div class="bloque-titulo">Herramientas Pixelares — Adobe Photoshop CS6</div>
 
-  <p>En el área de Marketing, Photoshop se usa para crear y editar casi todo el material visual que ves a diario:</p>
-
-  <ul class="ul-custom">
-    <li>Publicaciones y stories para redes sociales (Instagram, Facebook)</li>
-    <li>Banners y anuncios para sitios web</li>
-    <li>Flyers y afiches para imprimir o compartir digitalmente</li>
-    <li>Fotografías de productos retocadas para tiendas online (e-commerce)</li>
-    <li>Portadas de catálogos, revistas y materiales promocionales</li>
-    <li>Tarjetas de presentación y papelería corporativa</li>
-  </ul>
-
-  <div class="callout amarillo">
-    <div class="callout-label">💡 Para pensar</div>
-    <p>La próxima vez que veas una publicidad — en Instagram, en la calle, en un supermercado — preguntate: ¿qué imágenes habrá tenido que combinar o retocar alguien para que quede así? Eso es exactamente lo que vas a aprender a hacer.</p>
-  </div>
-</section>
-
-<!-- S2 -->
-<section class="seccion" id="s2">
-  <div class="seccion-num">Sección 02</div>
-  <h2>Conceptos esenciales antes de empezar</h2>
-
-  <div class="concepto">
-    <div class="concepto-titulo">¿Qué es un píxel?</div>
-    <p>Un píxel (abreviado "px") es el punto más pequeño de una imagen digital. Si acercás mucho una foto en la pantalla, vas a ver que se divide en cuadraditos de colores: eso son los píxeles. Una imagen está formada por miles o millones de píxeles.</p>
-  </div>
-
-  <div class="concepto">
-    <div class="concepto-titulo">¿Qué es la resolución?</div>
-    <p>La resolución indica cuántos píxeles hay en cada pulgada de una imagen (se mide en DPI o PPP). <strong>72 dpi</strong> es suficiente para pantalla (web, redes sociales). <strong>300 dpi</strong> es lo mínimo necesario para imprimir con calidad. Una imagen de 72 dpi se ve bien en pantalla pero sale borrosa si la imprimís.</p>
-  </div>
-
-  <div class="concepto">
-    <div class="concepto-titulo">Imágenes rasterizadas vs. vectoriales</div>
-    <p>Photoshop trabaja con imágenes <strong>rasterizadas</strong> (hechas de píxeles). Si las agrandás mucho, pierden calidad y se pixelan. Los programas vectoriales (como CorelDRAW, que verán después) usan matemática y se pueden agrandar sin perder calidad.</p>
-  </div>
-
-  <div class="concepto">
-    <div class="concepto-titulo">Modos de color: RGB y CMYK</div>
-    <p><strong>RGB</strong> (Rojo, Verde, Azul) es el modo para pantalla — web, redes sociales. <strong>CMYK</strong> (Cian, Magenta, Amarillo, Negro) es el modo para imprenta. Siempre crear el documento en el modo correcto según su destino.</p>
-  </div>
-</section>
-
-<!-- S3 -->
-<section class="seccion" id="s3">
-  <div class="seccion-num">Sección 03</div>
-  <h2>La interfaz de Photoshop CS6</h2>
-
-  <p>Cuando abrís Photoshop CS6, la pantalla está dividida en zonas. Conocerlas desde el principio te ahorra mucho tiempo:</p>
-
-  <div class="interfaz-grid">
-    <div class="interfaz-item">
-      <div class="ii-nombre">Barra de Menú</div>
-      <div class="ii-desc">La fila de palabras en la parte de arriba (Archivo, Edición, Imagen…). Desde acá se accede a todas las funciones del programa.</div>
-    </div>
-    <div class="interfaz-item">
-      <div class="ii-nombre">Barra de Opciones</div>
-      <div class="ii-desc">La barra horizontal justo debajo del menú. Cambia según la herramienta que tengas seleccionada — siempre mirala antes de usar una herramienta.</div>
-    </div>
-    <div class="interfaz-item">
-      <div class="ii-nombre">Panel de Herramientas</div>
-      <div class="ii-desc">La columna vertical de íconos a la izquierda. Acá están todas las herramientas: selección, pincel, texto, etc.</div>
-      <div class="ii-atajo"><kbd>Tab</kbd> muestra/oculta todos los paneles</div>
-    </div>
-    <div class="interfaz-item">
-      <div class="ii-nombre">Paneles laterales</div>
-      <div class="ii-desc">A la derecha aparecen paneles como Capas, Color, Historial. Si cerrás uno, lo recuperás desde el menú Ventana.</div>
-    </div>
-    <div class="interfaz-item">
-      <div class="ii-nombre">Área de trabajo (Canvas)</div>
-      <div class="ii-desc">El espacio del centro donde está tu documento. Lo gris alrededor es la mesa de trabajo — no forma parte del documento.</div>
-    </div>
-    <div class="interfaz-item">
-      <div class="ii-nombre">Barra de estado</div>
-      <div class="ii-desc">La barra abajo de todo. Muestra el porcentaje de zoom actual y el tamaño del archivo.</div>
+    <a href="clase1-photoshop.html" class="clase-card" target="_blank">
+      <div class="clase-num">01</div>
+      <div class="clase-info">
+        <div class="clase-titulo">Introducción a Adobe Photoshop</div>
+        <div class="clase-sub">Interfaz, documentos, herramientas de pintura y color</div>
       </div>
-      
-  </div>
-  <img src="Interfaz.jpg" width="1000" style="display:block; margin:auto;">
-
-  <h3>Cómo moverse por el documento</h3>
-  <ul class="ul-custom">
-    <li><strong>Zoom in/out:</strong> <kbd>Ctrl</kbd> + <kbd>+</kbd> para acercar, <kbd>Ctrl</kbd> + <kbd>-</kbd> para alejar</li>
-    <li><strong>Ver todo el documento:</strong> <kbd>Ctrl</kbd> + <kbd>0</kbd> (cero) — ajusta la vista a la pantalla</li>
-    <li><strong>Mover el canvas:</strong> mantener presionada la <kbd>Barra espaciadora</kbd> y arrastrar con el mouse</li>
-    <li><strong>Zoom al 100%:</strong> <kbd>Ctrl</kbd> + <kbd>1</kbd> — para ver el tamaño real en pantalla</li>
-  </ul>
-
-  <div class="callout rojo">
-    <div class="callout-label">⚠️ Importante</div>
-    <p>Si te perdés dentro del documento o no ves nada, apretá <kbd>Ctrl</kbd> + <kbd>0</kbd>. Eso te devuelve la vista completa del documento. Es el "reset" de la vista.</p>
-  </div>
-</section>
-
-<!-- S4 -->
-<section class="seccion" id="s4">
-  <div class="seccion-num">Sección 04</div>
-  <h2>Crear, abrir y guardar documentos</h2>
-
-  <h3>Crear un documento nuevo</h3>
-  <p>Ir a <strong>Archivo → Nuevo</strong> (o <kbd>Ctrl</kbd> + <kbd>N</kbd>). Aparece una ventana donde configurás:</p>
-
-  <ul class="ul-custom">
-    <li><strong>Nombre:</strong> poné el nombre del archivo desde acá, así no te olvidás</li>
-    <li><strong>Ancho y Alto:</strong> las dimensiones del documento. Podés elegir píxeles, cm, mm, etc.</li>
-    <li><strong>Resolución:</strong> 72 ppp para pantalla / web; 300 ppp para imprimir</li>
-    <li><strong>Modo de color:</strong> RGB Color para pantalla; CMYK para imprenta</li>
-    <li><strong>Contenido del fondo:</strong> Blanco (el más común), Transparente o Color de fondo</li>
-  </ul>
-
-  <div class="callout amarillo">
-    <div class="callout-label">📐 Medidas frecuentes en Marketing</div>
-    <p><strong>Instagram post:</strong> 1080×1080 px · <strong>Story:</strong> 1080×1920 px · <strong>Banner web:</strong> 728×90 px · <strong>Flyer A5 impresión:</strong> 1748×2480 px a 300 ppp · <strong>Tarjeta personal:</strong> 1063×591 px a 300 ppp</p>
-  </div>
-
-  <h3>Formatos para guardar</h3>
-
-  <div class="concepto">
-    <div class="concepto-titulo">PSD — Photoshop Document (el archivo de trabajo)</div>
-    <p>Guarda todo: capas, efectos, textos editables. Es el archivo que siempre debés mantener. Solo lo puede abrir Photoshop. Usá <kbd>Ctrl</kbd> + <kbd>S</kbd> para guardar o <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> para "Guardar como".</p>
-  </div>
-  <div class="concepto">
-    <div class="concepto-titulo">JPG — Para compartir y publicar</div>
-    <p>Aplana todas las capas en una sola imagen. Tiene compresión que reduce el tamaño pero puede perder algo de calidad. Ideal para web y redes sociales. Ir a <strong>Archivo → Guardar como → JPG</strong>.</p>
-  </div>
-  <div class="concepto">
-    <div class="concepto-titulo">PNG — Para imágenes con transparencia</div>
-    <p>Como el JPG pero soporta fondos transparentes. Ideal para logos que se van a poner sobre otros fondos. Tamaño de archivo un poco mayor que JPG.</p>
-  </div>
-
-  <div class="callout verde">
-    <div class="callout-label">✅ Regla de oro</div>
-    <p>Siempre guardá primero como <strong>PSD</strong> (tu archivo de trabajo) y luego exportá como JPG o PNG para compartir. Nunca trabajés solo con JPG — si lo guardás encima, perdés las capas para siempre.</p>
-  </div>
-</section>
-
-<!-- S5 -->
-<section class="seccion" id="s5">
-  <div class="seccion-num">Sección 05</div>
-  <h2>Herramientas de pintura y color</h2>
-
-  <h3>El selector de color</h3>
-  <p>En la parte inferior del panel de herramientas hay dos cuadrados superpuestos: el de adelante es el <strong>color de primer plano</strong> (el que usa el pincel) y el de atrás es el <strong>color de fondo</strong>. Hacé clic en cualquiera de los dos para abrir el selector de color.</p>
-
-  <p>En el selector podés ingresar colores de tres formas:</p>
-  <ul class="ul-custom">
-    <li><strong>Código HEX:</strong> el símbolo # seguido de 6 caracteres. Ejemplo: #FF0000 es rojo puro. Las marcas tienen sus colores definidos en HEX.</li>
-    <li><strong>Valores RGB:</strong> tres números del 0 al 255 (R, G, B). El blanco es 255,255,255 y el negro es 0,0,0.</li>
-    <li><strong>Visualmente:</strong> hacer clic en el espectro de color y ajustar la luminosidad en la barra lateral.</li>
-  </ul>
-
-  <div class="callout">
-    <div class="callout-label">💡 Atajo útil</div>
-    <p>Presionando <kbd>D</kbd> restaurás los colores por defecto (primer plano negro, fondo blanco). Presionando <kbd>X</kbd> intercambiás el color de primer plano con el de fondo.</p>
-  </div>
-
-  <h3>Herramienta Pincel (B)</h3>
-  <p>La herramienta más básica. Pintá sobre el canvas con el color de primer plano. En la barra de opciones podés controlar:</p>
-  <ul class="ul-custom">
-    <li><strong>Tamaño:</strong> usá las teclas <kbd>[</kbd> para achicar y <kbd>]</kbd> para agrandar el pincel</li>
-    <li><strong>Dureza:</strong> 100% = borde definido; 0% = borde difuminado (suave)</li>
-    <li><strong>Opacidad:</strong> qué tan transparente es el trazo. 100% = opaco, 50% = semitransparente</li>
-    <li><strong>Flujo:</strong> qué tan rápido se carga el color al arrastrar</li>
-  </ul>
-
-  <h3>Herramienta Degradado (G)</h3>
-  <p>Crea una transición suave entre dos o más colores. En CS6, hay varios tipos:</p>
-  <ul class="ul-custom">
-    <li><strong>Lineal:</strong> el degradado va en línea recta. Mantené <kbd>Shift</kbd> para que sea exactamente horizontal, vertical o a 45°</li>
-    <li><strong>Radial:</strong> el degradado sale del centro hacia afuera en forma de círculo</li>
-    <li><strong>Ángulo, Reflejo, Rombo:</strong> formas más complejas</li>
-  </ul>
-  <p>Para usar el degradado: elegís los dos colores (primer plano y fondo), seleccionás el tipo, y arrastrás sobre el canvas.</p>
-
-  <h3>Herramienta Cubo de Pintura / Relleno (G)</h3>
-  <p>Rellena un área con el color de primer plano. Si hay una selección activa, rellena solo esa área. Si no hay selección, rellena toda la capa o el área contigua del mismo color (según la tolerancia configurada).</p>
-  <p>También podés rellenar con <kbd>Alt</kbd> + <kbd>Supr</kbd> (rellena con color de primer plano) o <kbd>Ctrl</kbd> + <kbd>Supr</kbd> (rellena con color de fondo).</p>
-
-  <h3>Herramienta Cuentagotas (I)</h3>
-  <p>Hace clic en cualquier parte de la imagen para "tomar" ese color y convertirlo en tu color de primer plano. Muy útil para trabajar con los colores exactos de una imagen o marca.</p>
-  <p>Tip: mientras usás el Pincel, podés activar el cuentagotas momentáneamente manteniendo presionada la tecla <kbd>Alt</kbd>.</p>
-
-  <h3>Deshacer y el panel Historial</h3>
-  <p><kbd>Ctrl</kbd> + <kbd>Z</kbd> deshace el último paso. Pero en Photoshop CS6 solo deshace un paso. Para deshacer varios pasos, usá <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Z</kbd> repetidamente, o abrí el panel <strong>Ventana → Historial</strong> y hacé clic en el paso al que querés volver.</p>
-</section>
-
-<!-- S6 ATAJOS -->
-<section class="seccion" id="s6">
-  <div class="seccion-num">Sección 06</div>
-  <h2>Atajos de teclado de esta clase</h2>
-
-  <p>Algunos atajos útiles:</p>
-
-  <table class="atajos-tabla">
-    <thead>
-      <tr>
-        <th>Atajo</th>
-        <th>Qué hace</th>
-        <th>Cuándo usarlo</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td><kbd>Ctrl</kbd>+<kbd>N</kbd></td><td>Nuevo documento</td><td>Al iniciar un proyecto</td></tr>
-      <tr><td><kbd>Ctrl</kbd>+<kbd>O</kbd></td><td>Abrir archivo</td><td>Para abrir una imagen existente</td></tr>
-      <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td>Guardar</td><td>¡Frecuentemente! Cada 5 minutos mínimo</td></tr>
-      <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td><td>Guardar como</td><td>Para guardar con otro nombre o formato</td></tr>
-      <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td>Deshacer (1 paso)</td><td>Cuando cometés un error</td></tr>
-      <tr><td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Z</kbd></td><td>Deshacer varios pasos</td><td>Para volver varios pasos atrás</td></tr>
-      <tr><td><kbd>Ctrl</kbd>+<kbd>+</kbd></td><td>Zoom in (acercar)</td><td>Para ver detalles</td></tr>
-      <tr><td><kbd>Ctrl</kbd>+<kbd>-</kbd></td><td>Zoom out (alejar)</td><td>Para ver el conjunto</td></tr>
-      <tr><td><kbd>Ctrl</kbd>+<kbd>0</kbd></td><td>Ajustar a pantalla</td><td>Para ver todo el documento</td></tr>
-      <tr><td><kbd>B</kbd></td><td>Herramienta Pincel</td><td>Para pintar</td></tr>
-      <tr><td><kbd>G</kbd></td><td>Degradado / Relleno</td><td>Para rellenar áreas o crear degradados</td></tr>
-      <tr><td><kbd>I</kbd></td><td>Cuentagotas</td><td>Para tomar un color de la imagen</td></tr>
-      <tr><td><kbd>D</kbd></td><td>Colores por defecto</td><td>Restaura negro y blanco</td></tr>
-      <tr><td><kbd>X</kbd></td><td>Intercambiar colores</td><td>Cambia primer plano por fondo</td></tr>
-      <tr><td><kbd>[</kbd> / <kbd>]</kbd></td><td>Achicar / Agrandar pincel</td><td>Mientras usás el pincel</td></tr>
-      <tr><td><kbd>Espacio</kbd> + arrastrar</td><td>Mover el canvas</td><td>Para navegar por el documento</td></tr>
-      <tr><td><kbd>Alt</kbd>+<kbd>Supr</kbd></td><td>Rellenar con color primer plano</td><td>Relleno rápido</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- S7 EJERCICIOS -->
-<section class="seccion" id="s7">
-  <div class="seccion-num">Sección 07</div>
-  <h2>Ejercicios de la clase</h2>
-
-  <div class="ejercicio">
-    <div class="ejercicio-header">
-      <span class="ej-badge">Ejercicio 1</span>
-      <h4>Paleta de colores de una marca conocida</h4>
-    </div>
-    <div class="ejercicio-body">
-      <p>Vas a recrear la paleta de colores de una marca conocida (Coca-Cola, Nike, McDonald's o la que elijas) usando Photoshop.</p>
-      <div class="pasos">
-        <div class="paso"><span class="paso-n"></span><p>Abrí Photoshop. Archivo → Nuevo (<kbd>Ctrl</kbd>+<kbd>N</kbd>). Configurá: <strong>800×400 px, 72 ppp, RGB, fondo blanco</strong>.</p></div>
-        <div class="paso"><span class="paso-n"></span><p>Con la herramienta Selección Rectangular (<kbd>M</kbd>), dibujá una franja vertical que ocupe 1/5 del ancho. Luego hacé clic en el color de primer plano e ingresá el código HEX del primer color de tu marca. Rellená la selección con <kbd>Alt</kbd>+<kbd>Supr</kbd>. Deseleccioná con <kbd>Ctrl</kbd>+<kbd>D</kbd>.</p></div>
-        <div class="paso"><span class="paso-n"></span><p>Repetí para los 4 colores restantes, creando 5 franjas en total.</p></div>
-        <div class="paso"><span class="paso-n"></span><p>Guardá como PSD: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> → formato Photoshop. Nombre: <code>tuapellido_paleta.psd</code></p></div>
-        <div class="paso"><span class="paso-n"></span><p>Exportá como JPG: Archivo → Guardar como → JPG. Nombre: <code>tuapellido_paleta.jpg</code></p></div>
+      <div class="clase-meta">
+        
+        <div class="clase-arrow">→</div>
       </div>
-      <div class="callout amarillo" style="margin-top:16px">
-        <div class="callout-label">💡 Códigos HEX de ejemplo</div>
-        <p>Coca-Cola: #F40009 (rojo), #000000 (negro), #FFFFFF (blanco) · Nike: #000000, #FFFFFF, #FF6600 · McDonald's: #FFC72C (amarillo), #DA291C (rojo), #27251F (negro)</p>
+    </a>
+
+    <!-- <a href="clase2-photoshop.html" class="clase-card">
+      <div class="clase-num">02</div>
+      <div class="clase-info">
+        <div class="clase-titulo">Selecciones y Fotomontaje</div>
+        <div class="clase-sub">Lazo, varita mágica, selección rápida, borrado y recorte</div>
       </div>
-    </div>
+      <div class="clase-meta">
+        <div class="clase-tag-soft">3 hs</div>
+        <div class="clase-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="clases3a7-photoshop.html#c3" class="clase-card">
+      <div class="clase-num">03</div>
+      <div class="clase-info">
+        <div class="clase-titulo">El Poder de las Capas</div>
+        <div class="clase-sub">Panel capas, modos de fusión, grupos y organización</div>
+      </div>
+      <div class="clase-meta">
+        <div class="clase-tag-soft">3 hs</div>
+        <div class="clase-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="clases3a7-photoshop.html#c4" class="clase-card">
+      <div class="clase-num">04</div>
+      <div class="clase-info">
+        <div class="clase-titulo">Texto, Formas y Estilos de Capa</div>
+        <div class="clase-sub">Tipografía, formas vectoriales, efectos y máscaras</div>
+      </div>
+      <div class="clase-meta">
+        <div class="clase-tag-soft">3 hs</div>
+        <div class="clase-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="clases3a7-photoshop.html#c5" class="clase-card">
+      <div class="clase-num">05</div>
+      <div class="clase-info">
+        <div class="clase-titulo">Fotografía Digital y Retoque</div>
+        <div class="clase-sub">Niveles, curvas, corrección de color y retoque de producto</div>
+      </div>
+      <div class="clase-meta">
+        <div class="clase-tag-soft">3 hs</div>
+        <div class="clase-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="clases3a7-photoshop.html#c6" class="clase-card">
+      <div class="clase-num">06</div>
+      <div class="clase-info">
+        <div class="clase-titulo">Impresión y Exportación</div>
+        <div class="clase-sub">RGB vs CMYK, resolución, formatos y preparación para imprenta</div>
+      </div>
+      <div class="clase-meta">
+        <div class="clase-tag-soft">3 hs</div>
+        <div class="clase-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="clases3a7-photoshop.html#c7" class="clase-card">
+      <div class="clase-num">07</div>
+      <div class="clase-info">
+        <div class="clase-titulo">Proyecto Final — Mini Campaña Gráfica</div>
+        <div class="clase-sub">Trabajo integrador con presentación oral</div>
+      </div>
+      <div class="clase-meta">
+        <div class="clase-tag-soft">3 hs</div>
+        <div class="clase-arrow">→</div>
+      </div>
+    </a>
+
+    <div class="bloque-titulo">Herramientas Vectoriales — CorelDRAW (próximamente)</div>
+
+    <a href="#" class="clase-card inactiva">
+      <div class="clase-num">08</div>
+      <div class="clase-info">
+        <div class="clase-titulo">Introducción a CorelDRAW</div>
+        <div class="clase-sub">Interfaz, operaciones básicas y creación de objetos</div>
+      </div>
+      <div class="clase-meta">
+        <div class="clase-tag-soft">3 hs</div>
+        <div class="clase-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="#" class="clase-card inactiva">
+      <div class="clase-num">09</div>
+      <div class="clase-info">
+        <div class="clase-titulo">Objetos, Rellenos y Bordes</div>
+        <div class="clase-sub">Trabajar con objetos, rellenos, bordes y organización</div>
+      </div>
+      <div class="clase-meta">
+        <div class="clase-tag-soft">3 hs</div>
+        <div class="clase-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="#" class="clase-card inactiva">
+      <div class="clase-num">10</div>
+      <div class="clase-info">
+        <div class="clase-titulo">Efectos, Texto e Impresión en CorelDRAW</div>
+        <div class="clase-sub">Efectos 3D, trabajo con textos e impresión</div>
+      </div>
+      <div class="clase-meta">
+        <div class="clase-tag-soft">3 hs</div>
+        <div class="clase-arrow">→</div>
+      </div>
+    </a>
+
+    <div class="bloque-titulo">Afiches y Trabajo Final</div>
+
+    <a href="#" class="clase-card inactiva">
+      <div class="clase-num">11</div>
+      <div class="clase-info">
+        <div class="clase-titulo">Diseño de Afiches</div>
+        <div class="clase-sub">Finalidad, público objetivo, elementos gráficos y eslogan</div>
+      </div>
+      <div class="clase-meta">
+        <div class="clase-tag-soft">3 hs</div>
+        <div class="clase-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="#" class="clase-card inactiva">
+      <div class="clase-num">12–16</div>
+      <div class="clase-info">
+        <div class="clase-titulo">Trabajo Final Integrador</div>
+        <div class="clase-sub">Producción y defensa del proyecto final del semestre</div>
+      </div>
+      <div class="clase-meta">
+        <div class="clase-tag-soft">5 × 3 hs</div>
+        <div class="clase-arrow">→</div>
+      </div>
+    </a>
+
   </div>
 
-  <div class="ejercicio">
-    <div class="ejercicio-header">
-      <span class="ej-badge">Ejercicio 2</span>
-      <h4>Fondo para tu primera publicación de Instagram</h4>
-    </div>
-    <div class="ejercicio-body">
-      <p>Vas a diseñar el fondo de una publicación cuadrada de Instagram para una marca <strong>inventada por vos</strong>. Pensá en qué producto o servicio ofrecería, y elegí colores que la representen.</p>
-      <div class="pasos">
-        <div class="paso"><span class="paso-n"></span><p>Archivo → Nuevo (<kbd>Ctrl</kbd>+<kbd>N</kbd>): <strong>1080×1080 px, 72 ppp, RGB, fondo blanco</strong>. Poné el nombre de tu marca como nombre del archivo.</p></div>
-        <div class="paso"><span class="paso-n"></span><p>Elegí 2 colores para tu marca. Configuralos como color de primer plano y fondo. Seleccioná la herramienta Degradado (<kbd>G</kbd>) y elegí el tipo <strong>Lineal</strong> en la barra de opciones.</p></div>
-        <div class="paso"><span class="paso-n"></span><p>Arrastrá desde una esquina a la esquina opuesta. Si mantenés <kbd>Shift</kbd> mientras arrastrás, el degradado va exactamente horizontal o vertical.</p></div>
-        <div class="paso"><span class="paso-n"></span><p>Seleccioná el Pincel (<kbd>B</kbd>). Elegí una punta suave (dureza 0%), tamaño grande (300–500 px), opacidad 20–30%. Pintá manchas sutiles en las esquinas con un tercer color de acento.</p></div>
-        <div class="paso"><span class="paso-n"></span><p>Experimentá cambiando el Modo del pincel en la barra de opciones a "Superponer" o "Multiplicar" — observá cómo cambia el efecto.</p></div>
-        <div class="paso"><span class="paso-n"></span><p>Guardá como PSD: <code>tuapellido_instagram_fondo.psd</code></p></div>
-      </div>
-      <div class="entrega">
-        <span class="entrega-icon">📁</span>
-        <div>
-          <div class="entrega-label">Entrega de la clase</div>
-          <p>Subí a Google Classroom: <code>tuapellido_paleta.jpg</code> + <code>tuapellido_instagram_fondo.psd</code></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="resumen">
-  <h3>✅ Lo que aprendiste hoy</h3>
-  <ul>
-    <li>Para qué se usa Photoshop en Marketing y Publicidad</li>
-    <li>Qué es un píxel, la resolución y la diferencia entre RGB y CMYK</li>
-    <li>Todas las zonas de la interfaz de Photoshop CS6</li>
-    <li>Cómo crear, configurar y guardar documentos (PSD, JPG, PNG)</li>
-    <li>Herramientas de pintura: Pincel, Degradado, Relleno y Cuentagotas</li>
-    <li>Atajos esenciales para trabajar más rápido</li>
-  </ul>
-</div>
-
-</main>
+</main> -->
 
 <footer>
-  Informática Aplicada I · <span>CTT Marketing · Plan 2019</span> · Docente: Gianna Giupponi
+  <div class="footer-left">UTU · DGETP — Informática Aplicada I · Plan 2019 · CTT Marketing · Docente: Gianna Giupponi</div>
+  <div class="footer-right">Adobe Photoshop CS6 · CorelDRAW</div>
 </footer>
 
 </body>
