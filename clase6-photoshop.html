@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Del pixel a la impresión</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ── BASE ── */
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:#fff;color:#1a1a1a;font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.75}
+.topbar{background:#111;color:#aaa;font-family:'JetBrains Mono',monospace;font-size:11px;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;letter-spacing:.05em}
+.topbar a{color:#f5d060;text-decoration:none;font-weight:500}
+.topbar-links{display:flex;gap:18px}.topbar-links a{color:#aaa;text-decoration:none;transition:color .2s}.topbar-links a:hover{color:#f5d060}
+kbd{display:inline-block;background:#111;color:#f5d060;font-family:'JetBrains Mono',monospace;font-size:12px;padding:2px 8px;border-radius:3px;border-bottom:2px solid #444;white-space:nowrap}
+/* ── CLASE HERO ── */
+.clase-hero{padding:60px 48px 44px;position:relative;overflow:hidden;border-bottom:4px solid #111}
+.clase-hero::after{content:'CTT Marketing';position:absolute;right:-8px;bottom:10px;font-family:'Syne',sans-serif;font-size:88px;font-weight:800;color:rgba(255,255,255,.06);line-height:1;pointer-events:none;white-space:nowrap}
+.clase-tag{display:inline-flex;align-items:center;background:rgba(255,255,255,.15);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;border:1px solid rgba(255,255,255,.25)}
+.clase-hero h2{font-family:'Syne',sans-serif;font-size:clamp(30px,4.5vw,52px);font-weight:800;line-height:1.02;max-width:680px;margin-bottom:12px;color:#fff}
+.clase-hero h2 em{color:#f5d060;font-style:normal}
+.clase-hero p.sub{color:rgba(255,255,255,.72);font-size:15px;font-style:italic;max-width:500px}
+/* colores por clase */
+.c3{background:#6b2fa8}.c4{background:#b06000}.c5{background:#1a5a6b}.c6{background:#8b1a1a}.c7{background:#111}
+.c3 .topbar-border{border-bottom-color:#6b2fa8}.c4 .topbar-border{border-bottom-color:#b06000}
+/* ── ÍNDICE ── */
+.indice-wrap{padding:22px 28px;margin:36px 48px;border-left:4px solid #ddd}
+.indice-wrap h3{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#aaa;margin-bottom:10px}
+.indice-wrap ol{padding-left:20px}.indice-wrap ol li{margin-bottom:4px}
+.indice-wrap a{text-decoration:none;font-size:15px;transition:color .2s}.indice-wrap a:hover{text-decoration:underline}
+/* ── CONTENT ── */
+.content{max-width:780px;margin:0 auto;padding:0 48px 80px}
+.seccion{margin-top:54px}
+.seccion-num{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
+.seccion h3{font-family:'Syne',sans-serif;font-size:25px;font-weight:700;border-bottom:3px solid #111;padding-bottom:8px;margin-bottom:18px}
+.seccion h4{font-family:'Syne',sans-serif;font-size:18px;font-weight:600;margin:22px 0 8px}
+.seccion p{margin-bottom:13px}
+/* callouts */
+.callout{border-left:4px solid #ddd;padding:13px 17px;margin:16px 0;border-radius:0 3px 3px 0;font-size:15px}
+.callout p{margin-bottom:0}.callout-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:5px}
+.callout.am{border-color:#b89000;background:#fdf8dc}.callout.am .callout-label{color:#8a6a00}
+.callout.vd{border-color:#1a6b3a;background:#e8f5ed}.callout.vd .callout-label{color:#1a6b3a}
+.callout.rj{border-color:#c01a1a;background:#fdeaea}.callout.rj .callout-label{color:#c01a1a}
+/* concepto box */
+.concepto{background:#111;color:#fff;padding:18px 22px;margin:13px 0}
+.concepto-titulo{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#f5d060;margin-bottom:6px}
+.concepto p{color:#ccc;font-size:14.5px;margin-bottom:0;line-height:1.6}
+/* lista */
+ul.ul-c{list-style:none;padding:0;margin:10px 0 18px}
+ul.ul-c li{padding:7px 0 7px 22px;position:relative;border-bottom:1px solid #e8e8e8;font-size:15px}
+ul.ul-c li:last-child{border-bottom:none}
+ul.ul-c li::before{content:'▸';position:absolute;left:0;font-size:12px}
+/* atajos */
+.atajos-tabla{width:100%;border-collapse:collapse;margin:14px 0 26px;font-size:14px}
+.atajos-tabla thead tr{background:#111;color:#fff}
+.atajos-tabla thead th{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding:9px 13px;text-align:left}
+.atajos-tabla tbody tr:nth-child(even){background:#f5f5f5}
+.atajos-tabla td{padding:8px 13px;border-bottom:1px solid #e8e8e8;vertical-align:middle}
+.atajos-tabla td:first-child{font-family:'JetBrains Mono',monospace;font-weight:700}
+/* pasos */
+.pasos{margin:13px 0}
+.paso{display:flex;gap:13px;margin-bottom:10px;align-items:flex-start}
+.paso-n{color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+.paso p{margin-bottom:0;font-size:14.5px;line-height:1.6}
+/* ejercicio */
+.ejercicio{border:2px solid #111;margin:24px 0}
+.ejercicio-header{background:#111;color:#fff;padding:11px 17px;display:flex;align-items:center;gap:10px}
+.ej-badge{color:#fff;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:3px 10px;flex-shrink:0}
+.ejercicio-header h5{font-family:'Syne',sans-serif;font-size:16px;font-weight:700}
+.ejercicio-body{padding:17px 17px 20px}
+.ejercicio-body p{font-size:15px;margin-bottom:10px}
+/* entrega */
+.entrega{color:#fff;padding:13px 18px;margin-top:11px;display:flex;gap:10px;align-items:flex-start}
+.entrega-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.55);margin-bottom:3px}
+.entrega p{font-size:14px;color:rgba(255,255,255,.9);margin-bottom:0}
+.entrega code{background:rgba(0,0,0,.25);padding:1px 5px;font-family:'JetBrains Mono',monospace;font-size:11px;border-radius:2px}
+/* resumen */
+.resumen{color:#fff;padding:26px 30px;margin-top:44px;border-left:5px solid #f5d060}
+.resumen h3{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#f5d060;margin-bottom:11px}
+.resumen ul{padding-left:18px}.resumen li{font-size:14.5px;color:rgba(255,255,255,.85);margin-bottom:4px}
+/* separador */
+.separador{border:none;border-top:6px solid #111;margin:0px 0 0}
+/* footer */
+footer{background:#111;color:#555;text-align:center;padding:22px 32px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;margin-top:60px}
+/* responsive */
+@media(max-width:600px){.clase-hero,.content{padding-left:20px;padding-right:20px}.indice-wrap{margin:24px 20px}.topbar-links{display:none}}
+
+/* ── COLORES POR CLASE ── */
+/* Clase 3 — Púrpura */
+.c3-color{color:#6b2fa8}.c3-bg-soft{background:#f4eef9}.c3 ul.ul-c li::before{color:#6b2fa8}
+.c3-borde{border-left-color:#6b2fa8!important;background:#f4eef9!important}.c3-borde .callout-label{color:#6b2fa8!important}
+.c3-secnum{color:#6b2fa8}.c3-indice a{color:#6b2fa8}
+/* Clase 4 — Naranja oscuro */
+.c4-color{color:#b06000}.c4-bg-soft{background:#fdf3e3}.c4 ul.ul-c li::before{color:#b06000}
+.c4-borde{border-left-color:#b06000!important;background:#fdf3e3!important}.c4-borde .callout-label{color:#b06000!important}
+.c4-secnum{color:#b06000}.c4-indice a{color:#b06000}
+/* Clase 5 — Verde azulado */
+.c5-color{color:#1a5a6b}.c5-bg-soft{background:#e8f4f7}.c5 ul.ul-c li::before{color:#1a5a6b}
+.c5-borde{border-left-color:#1a5a6b!important;background:#e8f4f7!important}.c5-borde .callout-label{color:#1a5a6b!important}
+.c5-secnum{color:#1a5a6b}.c5-indice a{color:#1a5a6b}
+/* Clase 6 — Rojo oscuro */
+.c6-color{color:#8b1a1a}.c6-bg-soft{background:#faeaea}.c6 ul.ul-c li::before{color:#8b1a1a}
+.c6-borde{border-left-color:#8b1a1a!important;background:#faeaea!important}.c6-borde .callout-label{color:#8b1a1a!important}
+.c6-secnum{color:#8b1a1a}.c6-indice a{color:#8b1a1a}
+/* Clase 7 — Negro / dorado */
+.c7-color{color:#111}.c7-bg-soft{background:#f5f5f5}.c7 ul.ul-c li::before{color:#111}
+.c7-borde{border-left-color:#111!important;background:#f5f5f5!important}.c7-borde .callout-label{color:#111!important}
+.c7-secnum{color:#111}.c7-indice a{color:#111}
+</style>
+
+<body>
+<div class="topbar">
+  <span><a href="index.html">← Inicio</a></span>
+  <div class="topbar-links">
+    </div>
+</div>
+<!-- ══════════════════════ CLASE 6 ══════════════════════ -->
+<hr class="separador">
+<section id="c6">
+<header class="clase-hero c6">
+  
+  <h2>Del Píxel a<br>la <em>Impresión</em></h2>
+  <p class="sub">Aprendés la diferencia entre pantalla e impresión, y cómo exportar correctamente cada tipo de pieza.</p>
+</header>
+<div class="indice-wrap c6-bg-soft" style="border-left-color:#8b1a1a">
+  <h3>Contenido</h3>
+  <ol>
+    <li><a href="#c6s1" class="c6-color">RGB vs. CMYK</a></li>
+    <li><a href="#c6s2" class="c6-color">Resolución para impresión</a></li>
+    <li><a href="#c6s3" class="c6-color">Guardar y exportar correctamente</a></li>
+    <li><a href="#c6s4" class="c6-color">Atajos de exportación</a></li>
+    <li><a href="#c6s5" class="c6-color">Ejercicio</a></li>
+  </ol>
+</div>
+<div class="content">
+<section class="seccion" id="c6s1">
+  <div class="seccion-num c6-secnum">Sección 01</div>
+  <h3>RGB vs. CMYK</h3>
+  <div class="concepto"><div class="concepto-titulo">RGB — Para pantallas</div><p>Rojo, Verde, Azul. Las pantallas crean colores mezclando luz. En RGB el blanco es la suma de los tres colores; el negro es la ausencia de luz. Usalo para: web, redes sociales, presentaciones, videos.</p></div>
+  <div class="concepto"><div class="concepto-titulo">CMYK — Para impresión</div><p>Cian, Magenta, Amarillo y Negro. Las impresoras crean colores mezclando tintas. En CMYK el blanco es el papel sin tinta. Usalo para: flyers, afiches, tarjetas, catálogos, todo lo que se imprime.</p></div>
+  <div class="callout rj"><div class="callout-label">⚠️ Problema frecuente</div><p>Los colores brillantes (neones, azules eléctricos, rojos intensos) se ven fantásticos en pantalla pero pueden salir apagados al imprimir. Si tu diseño va a imprenta, trabajá en CMYK desde el principio.</p></div>
+</section>
+<section class="seccion" id="c6s2">
+  <div class="seccion-num c6-secnum">Sección 02</div>
+  <h3>Resolución para impresión</h3>
+  <p>Para impresión profesional se necesitan <strong>300 ppp mínimo</strong>. La fórmula para calcular los píxeles necesarios: <strong>(tamaño en mm ÷ 25.4) × 300 = píxeles</strong></p>
+  <ul class="ul-c">
+    <li><strong>Flyer A5</strong> (148×210 mm): 1748×2480 px a 300 ppp</li>
+    <li><strong>Flyer A4</strong> (210×297 mm): 2480×3508 px a 300 ppp</li>
+    <li><strong>Tarjeta personal</strong> (90×50 mm): 1063×591 px a 300 ppp</li>
+    <li><strong>Afiche A3</strong> (297×420 mm): 3508×4961 px a 300 ppp</li>
+  </ul>
+  <div class="callout am"><div class="callout-label">💡 Sangrado (Bleed)</div><p>Cuando un diseño tiene color hasta el borde del papel, la imprenta necesita 3mm extra fuera del borde para cortar con precisión. Si mandás trabajo a imprimir, consultá si te piden sangrado.</p></div>
+</section>
+<section class="seccion" id="c6s3">
+  <div class="seccion-num c6-secnum">Sección 03</div>
+  <h3>Guardar y exportar correctamente</h3>
+  <h4>Para web y redes sociales</h4>
+  <p>Ir a <strong>Archivo → Guardar para web y dispositivos</strong> (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>). Elegí JPG calidad 60–80% para web, o PNG si necesitás transparencia.</p>
+  <h4>Para imprenta</h4>
+  <p>Ir a <strong>Archivo → Guardar como → Photoshop PDF</strong>. Elegí "Calidad de impresión". También podés entregar el PSD si la imprenta lo acepta.</p>
+  <h4>Cambiar el modo de color</h4>
+  <p><strong>Imagen → Modo → Color CMYK</strong>. Siempre hacelo sobre una copia del archivo, nunca sobre el original.</p>
+</section>
+<section class="seccion" id="c6s4">
+  <div class="seccion-num c6-secnum">Sección 04</div>
+  <h3>Atajos — Exportación</h3>
+  <table class="atajos-tabla">
+    <thead><tr><th>Atajo</th><th>Qué hace</th></tr></thead>
+    <tbody>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td>Guardar (en formato PSD)</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td><td>Guardar como (elegir formato)</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td><td>Guardar para web y dispositivos</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>P</kbd></td><td>Imprimir</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd></td><td>Tamaño de imagen (ver/cambiar dimensiones y resolución)</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd></td><td>Tamaño del lienzo</td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="seccion" id="c6s5">
+  <div class="seccion-num c6-secnum">Sección 05</div>
+  <h3>Ejercicio</h3>
+  <div class="ejercicio">
+    <div class="ejercicio-header"><span class="ej-badge" style="background:#8b1a1a">Ejercicio principal</span><h5>Tarjeta de presentación de tu marca</h5></div>
+    <div class="ejercicio-body">
+      <p>Diseñá la tarjeta de presentación de tu marca. Formato estándar: 90×50 mm a 300 ppp. Frente y dorso.</p>
+      <div class="pasos">
+        <div class="paso"><span class="paso-n" style="background:#8b1a1a">1</span><p>Nuevo documento: <strong>1063×591 px, 300 ppp, CMYK</strong>. Activar reglas: <kbd>Ctrl</kbd>+<kbd>R</kbd>. Arrastrá guías a 5px de cada borde como margen de seguridad.</p></div>
+        <div class="paso"><span class="paso-n" style="background:#8b1a1a">2</span><p>Diseñá el <strong>frente</strong>: fondo con el color de tu marca, logo/nombre, e información de contacto (nombre, cargo, teléfono, email).</p></div>
+        <div class="paso"><span class="paso-n" style="background:#8b1a1a">3</span><p>Creá un segundo documento para el <strong>dorso</strong>: puede ser el logo grande sobre el color de marca, o un elemento gráfico simple.</p></div>
+        <div class="paso"><span class="paso-n" style="background:#8b1a1a">4</span><p>Exportá: Archivo → Guardar para web → JPG 100% (para digital) y Archivo → Guardar como → PDF (para imprenta).</p></div>
+      </div>
+      <div class="entrega" style="background:#8b1a1a"><span style="font-size:20px">📁</span><div><div class="entrega-label">Entrega</div><p>Subí: <code>tuapellido_tarjeta_frente.psd</code> + <code>tuapellido_tarjeta_dorso.psd</code> + JPG de ambos lados</p></div></div>
+    </div>
+  </div>
+</section>
+<div class="resumen" style="background:#8b1a1a">
+  <h3>✅ Lo que aprendiste hoy</h3>
+  <ul>
+    <li>Diferencia entre RGB (pantalla) y CMYK (impresión)</li>
+    <li>Cómo calcular la resolución correcta para imprimir a 300 ppp</li>
+    <li>Guardar para web, guardar como PDF y cuándo usar cada formato</li>
+    <li>El concepto de sangrado en diseño para imprenta</li>
+    <li>Diseñar una tarjeta personal con frente y dorso</li>
+  </ul>
+</div>
+</div>
+</section>
+
+
+<footer>Informática Aplicada I · <span style="color:#f5d060">CTT Marketing · Plan 2019</span> · Docente: Gianna Giupponi</footer>
+</body>
+</html>

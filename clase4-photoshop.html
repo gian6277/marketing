@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Texto, formas y estulos</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ── BASE ── */
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:#fff;color:#1a1a1a;font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.75}
+.topbar{background:#111;color:#aaa;font-family:'JetBrains Mono',monospace;font-size:11px;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;letter-spacing:.05em}
+.topbar a{color:#f5d060;text-decoration:none;font-weight:500}
+.topbar-links{display:flex;gap:18px}.topbar-links a{color:#aaa;text-decoration:none;transition:color .2s}.topbar-links a:hover{color:#f5d060}
+kbd{display:inline-block;background:#111;color:#f5d060;font-family:'JetBrains Mono',monospace;font-size:12px;padding:2px 8px;border-radius:3px;border-bottom:2px solid #444;white-space:nowrap}
+/* ── CLASE HERO ── */
+.clase-hero{padding:60px 48px 44px;position:relative;overflow:hidden;border-bottom:4px solid #111}
+.clase-hero::after{content:'CTT Marketing';position:absolute;right:-8px;bottom:10px;font-family:'Syne',sans-serif;font-size:88px;font-weight:800;color:rgba(255,255,255,.06);line-height:1;pointer-events:none;white-space:nowrap}
+.clase-tag{display:inline-flex;align-items:center;background:rgba(255,255,255,.15);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;border:1px solid rgba(255,255,255,.25)}
+.clase-hero h2{font-family:'Syne',sans-serif;font-size:clamp(30px,4.5vw,52px);font-weight:800;line-height:1.02;max-width:680px;margin-bottom:12px;color:#fff}
+.clase-hero h2 em{color:#f5d060;font-style:normal}
+.clase-hero p.sub{color:rgba(255,255,255,.72);font-size:15px;font-style:italic;max-width:500px}
+/* colores por clase */
+.c3{background:#6b2fa8}.c4{background:#b06000}.c5{background:#1a5a6b}.c6{background:#8b1a1a}.c7{background:#111}
+.c3 .topbar-border{border-bottom-color:#6b2fa8}.c4 .topbar-border{border-bottom-color:#b06000}
+/* ── ÍNDICE ── */
+.indice-wrap{padding:22px 28px;margin:36px 48px;border-left:4px solid #ddd}
+.indice-wrap h3{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#aaa;margin-bottom:10px}
+.indice-wrap ol{padding-left:20px}.indice-wrap ol li{margin-bottom:4px}
+.indice-wrap a{text-decoration:none;font-size:15px;transition:color .2s}.indice-wrap a:hover{text-decoration:underline}
+/* ── CONTENT ── */
+.content{max-width:780px;margin:0 auto;padding:0 48px 80px}
+.seccion{margin-top:54px}
+.seccion-num{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
+.seccion h3{font-family:'Syne',sans-serif;font-size:25px;font-weight:700;border-bottom:3px solid #111;padding-bottom:8px;margin-bottom:18px}
+.seccion h4{font-family:'Syne',sans-serif;font-size:18px;font-weight:600;margin:22px 0 8px}
+.seccion p{margin-bottom:13px}
+/* callouts */
+.callout{border-left:4px solid #ddd;padding:13px 17px;margin:16px 0;border-radius:0 3px 3px 0;font-size:15px}
+.callout p{margin-bottom:0}.callout-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:5px}
+.callout.am{border-color:#b89000;background:#fdf8dc}.callout.am .callout-label{color:#8a6a00}
+.callout.vd{border-color:#1a6b3a;background:#e8f5ed}.callout.vd .callout-label{color:#1a6b3a}
+.callout.rj{border-color:#c01a1a;background:#fdeaea}.callout.rj .callout-label{color:#c01a1a}
+/* concepto box */
+.concepto{background:#111;color:#fff;padding:18px 22px;margin:13px 0}
+.concepto-titulo{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#f5d060;margin-bottom:6px}
+.concepto p{color:#ccc;font-size:14.5px;margin-bottom:0;line-height:1.6}
+/* lista */
+ul.ul-c{list-style:none;padding:0;margin:10px 0 18px}
+ul.ul-c li{padding:7px 0 7px 22px;position:relative;border-bottom:1px solid #e8e8e8;font-size:15px}
+ul.ul-c li:last-child{border-bottom:none}
+ul.ul-c li::before{content:'▸';position:absolute;left:0;font-size:12px}
+/* atajos */
+.atajos-tabla{width:100%;border-collapse:collapse;margin:14px 0 26px;font-size:14px}
+.atajos-tabla thead tr{background:#111;color:#fff}
+.atajos-tabla thead th{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding:9px 13px;text-align:left}
+.atajos-tabla tbody tr:nth-child(even){background:#f5f5f5}
+.atajos-tabla td{padding:8px 13px;border-bottom:1px solid #e8e8e8;vertical-align:middle}
+.atajos-tabla td:first-child{font-family:'JetBrains Mono',monospace;font-weight:700}
+/* pasos */
+.pasos{margin:13px 0}
+.paso{display:flex;gap:13px;margin-bottom:10px;align-items:flex-start}
+.paso-n{color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+.paso p{margin-bottom:0;font-size:14.5px;line-height:1.6}
+/* ejercicio */
+.ejercicio{border:2px solid #111;margin:24px 0}
+.ejercicio-header{background:#111;color:#fff;padding:11px 17px;display:flex;align-items:center;gap:10px}
+.ej-badge{color:#fff;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:3px 10px;flex-shrink:0}
+.ejercicio-header h5{font-family:'Syne',sans-serif;font-size:16px;font-weight:700}
+.ejercicio-body{padding:17px 17px 20px}
+.ejercicio-body p{font-size:15px;margin-bottom:10px}
+/* entrega */
+.entrega{color:#fff;padding:13px 18px;margin-top:11px;display:flex;gap:10px;align-items:flex-start}
+.entrega-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.55);margin-bottom:3px}
+.entrega p{font-size:14px;color:rgba(255,255,255,.9);margin-bottom:0}
+.entrega code{background:rgba(0,0,0,.25);padding:1px 5px;font-family:'JetBrains Mono',monospace;font-size:11px;border-radius:2px}
+/* resumen */
+.resumen{color:#fff;padding:26px 30px;margin-top:44px;border-left:5px solid #f5d060}
+.resumen h3{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#f5d060;margin-bottom:11px}
+.resumen ul{padding-left:18px}.resumen li{font-size:14.5px;color:rgba(255,255,255,.85);margin-bottom:4px}
+/* separador */
+.separador{border:none;border-top:6px solid #111;margin:0px 0 0}
+/* footer */
+footer{background:#111;color:#555;text-align:center;padding:22px 32px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;margin-top:60px}
+/* responsive */
+@media(max-width:600px){.clase-hero,.content{padding-left:20px;padding-right:20px}.indice-wrap{margin:24px 20px}.topbar-links{display:none}}
+
+/* ── COLORES POR CLASE ── */
+/* Clase 3 — Púrpura */
+.c3-color{color:#6b2fa8}.c3-bg-soft{background:#f4eef9}.c3 ul.ul-c li::before{color:#6b2fa8}
+.c3-borde{border-left-color:#6b2fa8!important;background:#f4eef9!important}.c3-borde .callout-label{color:#6b2fa8!important}
+.c3-secnum{color:#6b2fa8}.c3-indice a{color:#6b2fa8}
+/* Clase 4 — Naranja oscuro */
+.c4-color{color:#b06000}.c4-bg-soft{background:#fdf3e3}.c4 ul.ul-c li::before{color:#b06000}
+.c4-borde{border-left-color:#b06000!important;background:#fdf3e3!important}.c4-borde .callout-label{color:#b06000!important}
+.c4-secnum{color:#b06000}.c4-indice a{color:#b06000}
+/* Clase 5 — Verde azulado */
+.c5-color{color:#1a5a6b}.c5-bg-soft{background:#e8f4f7}.c5 ul.ul-c li::before{color:#1a5a6b}
+.c5-borde{border-left-color:#1a5a6b!important;background:#e8f4f7!important}.c5-borde .callout-label{color:#1a5a6b!important}
+.c5-secnum{color:#1a5a6b}.c5-indice a{color:#1a5a6b}
+/* Clase 6 — Rojo oscuro */
+.c6-color{color:#8b1a1a}.c6-bg-soft{background:#faeaea}.c6 ul.ul-c li::before{color:#8b1a1a}
+.c6-borde{border-left-color:#8b1a1a!important;background:#faeaea!important}.c6-borde .callout-label{color:#8b1a1a!important}
+.c6-secnum{color:#8b1a1a}.c6-indice a{color:#8b1a1a}
+/* Clase 7 — Negro / dorado */
+.c7-color{color:#111}.c7-bg-soft{background:#f5f5f5}.c7 ul.ul-c li::before{color:#111}
+.c7-borde{border-left-color:#111!important;background:#f5f5f5!important}.c7-borde .callout-label{color:#111!important}
+.c7-secnum{color:#111}.c7-indice a{color:#111}
+</style>
+
+<body>
+<div class="topbar">
+  <span><a href="index.html">← Inicio</a></span>
+  </div>
+
+<hr class="separador">
+<section id="c4">
+<header class="clase-hero c4">
+  
+  <h2>Texto, Formas<br>y <em>Estilos</em></h2>
+  <p class="sub">Agregás mensajes, tipografía y efectos visuales. Fundamentos del diseño publicitario.</p>
+</header>
+<div class="indice-wrap c4-bg-soft" style="border-left-color:#b06000">
+  <h3>Contenido</h3>
+  <ol>
+    <li><a href="#c4s1" class="c4-color">Herramienta Texto</a></li>
+    <li><a href="#c4s2" class="c4-color">Herramientas de Formas</a></li>
+    <li><a href="#c4s3" class="c4-color">Estilos de Capa</a></li>
+    <li><a href="#c4s4" class="c4-color">Máscaras de Capa</a></li>
+    <li><a href="#c4s5" class="c4-color">Atajos de teclado</a></li>
+    <li><a href="#c4s6" class="c4-color">Ejercicio</a></li>
+  </ol>
+</div>
+<div class="content">
+<section class="seccion" id="c4s1">
+  <div class="seccion-num c4-secnum">Sección 01</div>
+  <h3>Herramienta Texto (T)</h3>
+  <p>Con la herramienta Texto (<kbd>T</kbd>) escribís directamente sobre el canvas. Cada texto genera automáticamente una nueva capa.</p>
+  <h4>Texto de punto vs. Cuadro de texto</h4>
+  <ul class="ul-c">
+    <li><strong>Clic simple:</strong> texto de punto. El texto no se ajusta al espacio. Ideal para títulos y palabras cortas.</li>
+    <li><strong>Clic y arrastrar:</strong> cuadro de texto. El texto se ajusta dentro del rectángulo. Ideal para párrafos.</li>
+  </ul>
+  <h4>Panel Carácter (Ventana → Carácter)</h4>
+  <ul class="ul-c">
+    <li><strong>Fuente:</strong> serif = clásico, palo seco = moderno, cursiva = elegante.</li>
+    <li><strong>Tamaño:</strong> en puntos (pt). Título: 48–120 pt; texto de cuerpo: 8–14 pt.</li>
+    <li><strong>Interlineado:</strong> espacio entre líneas. "Auto" funciona en la mayoría de casos.</li>
+    <li><strong>Tracking:</strong> espacio entre todas las letras. Valores positivos separan, negativos comprimen.</li>
+    <li><strong>Color del texto:</strong> clic en el cuadro de color en el panel.</li>
+  </ul>
+  <div class="callout am"><div class="callout-label">💡 Marketing y tipografía</div><p>Coca-Cola usa cursivas que transmiten tradición; Apple usa palo seco minimalista que transmite tecnología. La fuente que elegís dice algo sobre tu marca antes de que alguien lea una sola palabra.</p></div>
+</section>
+<section class="seccion" id="c4s2">
+  <div class="seccion-num c4-secnum">Sección 02</div>
+  <h3>Herramientas de Formas (U)</h3>
+  <p>Las formas se crean como capas vectoriales (no pierden calidad al escalar). Se accede con la tecla <kbd>U</kbd>, alternando con <kbd>Shift</kbd>+<kbd>U</kbd>.</p>
+  <ul class="ul-c">
+    <li><strong>Rectángulo:</strong> para fondos, botones, separadores. <kbd>Shift</kbd> = cuadrado perfecto.</li>
+    <li><strong>Rectángulo redondeado:</strong> esquinas redondeadas. Ideal para botones de CTA.</li>
+    <li><strong>Elipse:</strong> óvalos y círculos. <kbd>Shift</kbd> = círculo perfecto.</li>
+    <li><strong>Polígono:</strong> triángulos, estrellas. Configurás la cantidad de lados en la barra de opciones.</li>
+    <li><strong>Forma personalizada:</strong> formas preinstaladas (flechas, íconos, etc.).</li>
+  </ul>
+  <p>En la barra de opciones configurás: <strong>Relleno</strong> (color de la forma) y <strong>Trazo</strong> (borde).</p>
+</section>
+<section class="seccion" id="c4s3">
+  <div class="seccion-num c4-secnum">Sección 03</div>
+  <h3>Estilos de Capa</h3>
+  <p>Agregan efectos visuales sin modificar los píxeles originales. Se accede haciendo <strong>doble clic sobre la miniatura de la capa</strong>.</p>
+  <div class="concepto"><div class="concepto-titulo">Sombra paralela (Drop Shadow)</div><p>Agrega una sombra detrás del elemento. Parámetros: Opacidad, Ángulo (de dónde viene la luz), Distancia, Tamaño (difuminado). Muy usado en textos sobre fondos complejos.</p></div>
+  <div class="concepto"><div class="concepto-titulo">Resplandor exterior (Outer Glow)</div><p>Agrega un brillo alrededor del elemento. Muy usado en textos neón o elementos que deben destacar sobre fondos oscuros.</p></div>
+  <div class="concepto"><div class="concepto-titulo">Bisel y Relieve (Bevel & Emboss)</div><p>Da efecto 3D al elemento. Muy usado en logotipos y botones.</p></div>
+  <div class="concepto"><div class="concepto-titulo">Superposición de color / Degradado</div><p>Rellena la capa con un color o degradado sin necesidad de pintar encima. Práctico para cambiar el color de una forma o texto.</p></div>
+  <div class="concepto"><div class="concepto-titulo">Trazo (Stroke)</div><p>Agrega un borde alrededor del elemento. Configurás el grosor, la posición y el color.</p></div>
+</section>
+<section class="seccion" id="c4s4">
+  <div class="seccion-num c4-secnum">Sección 04</div>
+  <h3>Máscaras de Capa</h3>
+  <p>Una máscara controla qué partes de una capa son visibles, <strong>sin borrar ningún píxel</strong>. Para agregar: seleccioná la capa y hacé clic en el ícono de máscara en la parte inferior del panel Capas.</p>
+  <ul class="ul-c">
+    <li><strong>Pintás con negro:</strong> oculta esa parte de la capa (transparente)</li>
+    <li><strong>Pintás con blanco:</strong> revela esa parte de la capa (visible)</li>
+    <li><strong>Pintás con gris:</strong> semitransparente</li>
+  </ul>
+  <div class="callout vd"><div class="callout-label">✅ Por qué es mejor que borrar</div><p>Si borrás píxeles directamente, la información se pierde. Con una máscara podés "desborrar" pintando con blanco. El original siempre está ahí: es edición no destructiva.</p></div>
+</section>
+<section class="seccion" id="c4s5">
+  <div class="seccion-num c4-secnum">Sección 05</div>
+  <h3>Atajos — Texto, Formas y Estilos</h3>
+  <table class="atajos-tabla">
+    <thead><tr><th>Atajo</th><th>Qué hace</th></tr></thead>
+    <tbody>
+      <tr><td><kbd>T</kbd></td><td>Herramienta Texto</td></tr>
+      <tr><td><kbd>U</kbd></td><td>Herramienta Forma (alternar con <kbd>Shift</kbd>+<kbd>U</kbd>)</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>Enter</kbd></td><td>Confirmar texto (salir del modo edición)</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>A</kbd> (con texto activo)</td><td>Seleccionar todo el texto</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>T</kbd></td><td>Transformación libre (funciona en texto y formas)</td></tr>
+      <tr><td>Doble clic en miniatura de capa</td><td>Abrir ventana de Estilos de capa</td></tr>
+      <tr><td><kbd>Alt</kbd>+<kbd>Ctrl</kbd>+<kbd>G</kbd></td><td>Crear/quitar máscara de recorte</td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="seccion" id="c4s6">
+  <div class="seccion-num c4-secnum">Sección 06</div>
+  <h3>Ejercicio</h3>
+  <div class="ejercicio">
+    <div class="ejercicio-header"><span class="ej-badge" style="background:#b06000">Ejercicio principal</span><h5>Banner publicitario web (300×250 px)</h5></div>
+    <div class="ejercicio-body">
+      <p>Diseñá un banner de publicidad digital para tu marca. Debe tener: imagen de producto, nombre de marca, eslogan y un botón de llamada a la acción (CTA). El formato 300×250 px es el más usado en publicidad web.</p>
+      <div class="pasos">
+        <div class="paso"><span class="paso-n" style="background:#b06000">1</span><p>Nuevo documento: <strong>300×250 px, 72 ppp, RGB</strong>.</p></div>
+        <div class="paso"><span class="paso-n" style="background:#b06000">2</span><p>Fondo con el color de tu marca. Pegá la imagen del producto (del ejercicio de clase 2) y ajustá su tamaño.</p></div>
+        <div class="paso"><span class="paso-n" style="background:#b06000">3</span><p>Usá la máscara de capa para suavizar el borde del producto contra el fondo: pintá con pincel suave negro en los bordes de la máscara.</p></div>
+        <div class="paso"><span class="paso-n" style="background:#b06000">4</span><p>Herramienta Texto (<kbd>T</kbd>): escribí el nombre de tu marca en tipografía grande. Doble clic en la capa → agregá Sombra paralela.</p></div>
+        <div class="paso"><span class="paso-n" style="background:#b06000">5</span><p>Nuevo texto más pequeño: escribí el eslogan de tu marca.</p></div>
+        <div class="paso"><span class="paso-n" style="background:#b06000">6</span><p>Rectángulo redondeado (<kbd>U</kbd>): dibujá un botón en la parte inferior con color contrastante. Escribí el texto del CTA: "Comprá ahora", "Ver más", "Descubrí".</p></div>
+        <div class="paso"><span class="paso-n" style="background:#b06000">7</span><p>Revisá la jerarquía: el ojo debe recorrer → producto → marca → eslogan → botón.</p></div>
+      </div>
+      <div class="entrega" style="background:#b06000"><span style="font-size:20px">📁</span><div><div class="entrega-label">Entrega</div><p>Subí: <code>tuapellido_banner.psd</code> + <code>tuapellido_banner.jpg</code></p></div></div>
+    </div>
+  </div>
+</section>
+<div class="resumen" style="background:#b06000">
+  <h3>✅ Lo que aprendiste hoy</h3>
+  <ul>
+    <li>Herramienta Texto: punto vs. cuadro, panel Carácter, opciones tipográficas</li>
+    <li>Herramientas de forma: rectángulo, elipse, polígono, forma personalizada</li>
+    <li>Estilos de capa: sombra, resplandor, bisel, trazo, superposición</li>
+    <li>Máscaras de capa: ocultar sin borrar, pintar con negro y blanco</li>
+    <li>Cómo diseñar un banner publicitario con jerarquía visual y CTA</li>
+  </ul>
+</div>
+</div>
+</section>
+
+
+<footer>Informática Aplicada I · <span style="color:#f5d060">CTT Marketing · Plan 2019</span> · Docente: Gianna Giupponi</footer>
+</body>
+</html>

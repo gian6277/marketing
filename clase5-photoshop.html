@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forografía y retoque</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ── BASE ── */
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:#fff;color:#1a1a1a;font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.75}
+.topbar{background:#111;color:#aaa;font-family:'JetBrains Mono',monospace;font-size:11px;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;letter-spacing:.05em}
+.topbar a{color:#f5d060;text-decoration:none;font-weight:500}
+.topbar-links{display:flex;gap:18px}.topbar-links a{color:#aaa;text-decoration:none;transition:color .2s}.topbar-links a:hover{color:#f5d060}
+kbd{display:inline-block;background:#111;color:#f5d060;font-family:'JetBrains Mono',monospace;font-size:12px;padding:2px 8px;border-radius:3px;border-bottom:2px solid #444;white-space:nowrap}
+/* ── CLASE HERO ── */
+.clase-hero{padding:60px 48px 44px;position:relative;overflow:hidden;border-bottom:4px solid #111}
+.clase-hero::after{content:'CTT Marketing';position:absolute;right:-8px;bottom:10px;font-family:'Syne',sans-serif;font-size:88px;font-weight:800;color:rgba(255,255,255,.06);line-height:1;pointer-events:none;white-space:nowrap}
+.clase-tag{display:inline-flex;align-items:center;background:rgba(255,255,255,.15);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;border:1px solid rgba(255,255,255,.25)}
+.clase-hero h2{font-family:'Syne',sans-serif;font-size:clamp(30px,4.5vw,52px);font-weight:800;line-height:1.02;max-width:680px;margin-bottom:12px;color:#fff}
+.clase-hero h2 em{color:#f5d060;font-style:normal}
+.clase-hero p.sub{color:rgba(255,255,255,.72);font-size:15px;font-style:italic;max-width:500px}
+/* colores por clase */
+.c3{background:#6b2fa8}.c4{background:#b06000}.c5{background:#1a5a6b}.c6{background:#8b1a1a}.c7{background:#111}
+.c3 .topbar-border{border-bottom-color:#6b2fa8}.c4 .topbar-border{border-bottom-color:#b06000}
+/* ── ÍNDICE ── */
+.indice-wrap{padding:22px 28px;margin:36px 48px;border-left:4px solid #ddd}
+.indice-wrap h3{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#aaa;margin-bottom:10px}
+.indice-wrap ol{padding-left:20px}.indice-wrap ol li{margin-bottom:4px}
+.indice-wrap a{text-decoration:none;font-size:15px;transition:color .2s}.indice-wrap a:hover{text-decoration:underline}
+/* ── CONTENT ── */
+.content{max-width:780px;margin:0 auto;padding:0 48px 80px}
+.seccion{margin-top:54px}
+.seccion-num{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
+.seccion h3{font-family:'Syne',sans-serif;font-size:25px;font-weight:700;border-bottom:3px solid #111;padding-bottom:8px;margin-bottom:18px}
+.seccion h4{font-family:'Syne',sans-serif;font-size:18px;font-weight:600;margin:22px 0 8px}
+.seccion p{margin-bottom:13px}
+/* callouts */
+.callout{border-left:4px solid #ddd;padding:13px 17px;margin:16px 0;border-radius:0 3px 3px 0;font-size:15px}
+.callout p{margin-bottom:0}.callout-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:5px}
+.callout.am{border-color:#b89000;background:#fdf8dc}.callout.am .callout-label{color:#8a6a00}
+.callout.vd{border-color:#1a6b3a;background:#e8f5ed}.callout.vd .callout-label{color:#1a6b3a}
+.callout.rj{border-color:#c01a1a;background:#fdeaea}.callout.rj .callout-label{color:#c01a1a}
+/* concepto box */
+.concepto{background:#111;color:#fff;padding:18px 22px;margin:13px 0}
+.concepto-titulo{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#f5d060;margin-bottom:6px}
+.concepto p{color:#ccc;font-size:14.5px;margin-bottom:0;line-height:1.6}
+/* lista */
+ul.ul-c{list-style:none;padding:0;margin:10px 0 18px}
+ul.ul-c li{padding:7px 0 7px 22px;position:relative;border-bottom:1px solid #e8e8e8;font-size:15px}
+ul.ul-c li:last-child{border-bottom:none}
+ul.ul-c li::before{content:'▸';position:absolute;left:0;font-size:12px}
+/* atajos */
+.atajos-tabla{width:100%;border-collapse:collapse;margin:14px 0 26px;font-size:14px}
+.atajos-tabla thead tr{background:#111;color:#fff}
+.atajos-tabla thead th{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding:9px 13px;text-align:left}
+.atajos-tabla tbody tr:nth-child(even){background:#f5f5f5}
+.atajos-tabla td{padding:8px 13px;border-bottom:1px solid #e8e8e8;vertical-align:middle}
+.atajos-tabla td:first-child{font-family:'JetBrains Mono',monospace;font-weight:700}
+/* pasos */
+.pasos{margin:13px 0}
+.paso{display:flex;gap:13px;margin-bottom:10px;align-items:flex-start}
+.paso-n{color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+.paso p{margin-bottom:0;font-size:14.5px;line-height:1.6}
+/* ejercicio */
+.ejercicio{border:2px solid #111;margin:24px 0}
+.ejercicio-header{background:#111;color:#fff;padding:11px 17px;display:flex;align-items:center;gap:10px}
+.ej-badge{color:#fff;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:3px 10px;flex-shrink:0}
+.ejercicio-header h5{font-family:'Syne',sans-serif;font-size:16px;font-weight:700}
+.ejercicio-body{padding:17px 17px 20px}
+.ejercicio-body p{font-size:15px;margin-bottom:10px}
+/* entrega */
+.entrega{color:#fff;padding:13px 18px;margin-top:11px;display:flex;gap:10px;align-items:flex-start}
+.entrega-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.55);margin-bottom:3px}
+.entrega p{font-size:14px;color:rgba(255,255,255,.9);margin-bottom:0}
+.entrega code{background:rgba(0,0,0,.25);padding:1px 5px;font-family:'JetBrains Mono',monospace;font-size:11px;border-radius:2px}
+/* resumen */
+.resumen{color:#fff;padding:26px 30px;margin-top:44px;border-left:5px solid #f5d060}
+.resumen h3{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#f5d060;margin-bottom:11px}
+.resumen ul{padding-left:18px}.resumen li{font-size:14.5px;color:rgba(255,255,255,.85);margin-bottom:4px}
+/* separador */
+.separador{border:none;border-top:6px solid #111;margin:0px 0 0}
+/* footer */
+footer{background:#111;color:#555;text-align:center;padding:22px 32px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;margin-top:60px}
+/* responsive */
+@media(max-width:600px){.clase-hero,.content{padding-left:20px;padding-right:20px}.indice-wrap{margin:24px 20px}.topbar-links{display:none}}
+
+/* ── COLORES POR CLASE ── */
+/* Clase 3 — Púrpura */
+.c3-color{color:#6b2fa8}.c3-bg-soft{background:#f4eef9}.c3 ul.ul-c li::before{color:#6b2fa8}
+.c3-borde{border-left-color:#6b2fa8!important;background:#f4eef9!important}.c3-borde .callout-label{color:#6b2fa8!important}
+.c3-secnum{color:#6b2fa8}.c3-indice a{color:#6b2fa8}
+/* Clase 4 — Naranja oscuro */
+.c4-color{color:#b06000}.c4-bg-soft{background:#fdf3e3}.c4 ul.ul-c li::before{color:#b06000}
+.c4-borde{border-left-color:#b06000!important;background:#fdf3e3!important}.c4-borde .callout-label{color:#b06000!important}
+.c4-secnum{color:#b06000}.c4-indice a{color:#b06000}
+/* Clase 5 — Verde azulado */
+.c5-color{color:#1a5a6b}.c5-bg-soft{background:#e8f4f7}.c5 ul.ul-c li::before{color:#1a5a6b}
+.c5-borde{border-left-color:#1a5a6b!important;background:#e8f4f7!important}.c5-borde .callout-label{color:#1a5a6b!important}
+.c5-secnum{color:#1a5a6b}.c5-indice a{color:#1a5a6b}
+/* Clase 6 — Rojo oscuro */
+.c6-color{color:#8b1a1a}.c6-bg-soft{background:#faeaea}.c6 ul.ul-c li::before{color:#8b1a1a}
+.c6-borde{border-left-color:#8b1a1a!important;background:#faeaea!important}.c6-borde .callout-label{color:#8b1a1a!important}
+.c6-secnum{color:#8b1a1a}.c6-indice a{color:#8b1a1a}
+/* Clase 7 — Negro / dorado */
+.c7-color{color:#111}.c7-bg-soft{background:#f5f5f5}.c7 ul.ul-c li::before{color:#111}
+.c7-borde{border-left-color:#111!important;background:#f5f5f5!important}.c7-borde .callout-label{color:#111!important}
+.c7-secnum{color:#111}.c7-indice a{color:#111}
+</style>
+
+<body>
+<div class="topbar">
+  <span><a href="index.html">← Inicio</a></span>
+  <div class="topbar-links">
+      </div>
+</div>
+<!-- ══════════════════════ CLASE 5 ══════════════════════ -->
+<hr class="separador">
+<section id="c5">
+<header class="clase-hero c5">
+ 
+  <h2>Fotografía y<br><em>Retoque</em></h2>
+  <p class="sub">Corregís y mejorás fotografías de productos. Habilidad clave para e-commerce y marketing digital.</p>
+</header>
+<div class="indice-wrap c5-bg-soft" style="border-left-color:#1a5a6b">
+  <h3>Contenido</h3>
+  <ol>
+    <li><a href="#c5s1" class="c5-color">Conceptos de fotografía digital</a></li>
+    <li><a href="#c5s2" class="c5-color">Ajustes de imagen</a></li>
+    <li><a href="#c5s3" class="c5-color">Herramientas de retoque</a></li>
+    <li><a href="#c5s4" class="c5-color">Atajos de teclado</a></li>
+    <li><a href="#c5s5" class="c5-color">Ejercicio</a></li>
+  </ol>
+</div>
+<div class="content">
+<section class="seccion" id="c5s1">
+  <div class="seccion-num c5-secnum">Sección 01</div>
+  <h3>Conceptos de fotografía digital</h3>
+  <div class="concepto"><div class="concepto-titulo">Exposición</div><p>Qué tan clara u oscura está la foto. Una foto <strong style="color:#f5d060">sobreexpuesta</strong> tiene zonas blancas quemadas sin detalle. Una <strong style="color:#f5d060">subexpuesta</strong> está muy oscura. Photoshop puede corregir ambos casos hasta cierto punto.</p></div>
+  <div class="concepto"><div class="concepto-titulo">Balance de blancos</div><p>La temperatura de color de la luz. Si la foto tiene un tono amarillento o azulado no deseado (dominante de color), se puede corregir en Photoshop.</p></div>
+  <div class="concepto"><div class="concepto-titulo">Regla de oro: duplicar antes de retocar</div><p>Antes de cualquier retoque, duplicá la capa base con <kbd>Ctrl</kbd>+<kbd>J</kbd>. Trabajá sobre la copia. Así el original siempre queda intacto si necesitás volver atrás.</p></div>
+</section>
+<section class="seccion" id="c5s2">
+  <div class="seccion-num c5-secnum">Sección 02</div>
+  <h3>Ajustes de imagen (Imagen → Ajustes)</h3>
+  <h4>Niveles (<kbd>Ctrl</kbd>+<kbd>L</kbd>)</h4>
+  <p>Muestra un histograma (gráfico de distribución de tonos). Tiene tres triángulos:</p>
+  <ul class="ul-c">
+    <li><strong>Triángulo negro (izquierda):</strong> define qué tono es el "negro más oscuro". Moverlo a la derecha oscurece las sombras.</li>
+    <li><strong>Triángulo gris (centro):</strong> controla los tonos medios. A la izquierda aclara, a la derecha oscurece.</li>
+    <li><strong>Triángulo blanco (derecha):</strong> define qué tono es el "blanco más claro". Moverlo a la izquierda aclara los brillos.</li>
+  </ul>
+  <h4>Tono/Saturación (<kbd>Ctrl</kbd>+<kbd>U</kbd>)</h4>
+  <ul class="ul-c">
+    <li><strong>Tono:</strong> cambia el color dominante de la imagen</li>
+    <li><strong>Saturación:</strong> qué tan vívidos son los colores. Positivo = más intenso; negativo = más grisáceo.</li>
+    <li><strong>Luminosidad:</strong> aclara u oscurece los colores seleccionados.</li>
+    <li><strong>Casilla "Colorear":</strong> convierte la imagen a monocromático de un solo tono.</li>
+  </ul>
+  <h4>Curvas (<kbd>Ctrl</kbd>+<kbd>M</kbd>)</h4>
+  <p>El ajuste más preciso. Muestra una curva diagonal que representa la relación entre tonos originales y resultado. Al arrastrar puntos en la curva, modificás zonas específicas: zona inferior izquierda = sombras; zona central = tonos medios; zona superior derecha = luces. Una curva en "S" aumenta el contraste de forma natural.</p>
+</section>
+<section class="seccion" id="c5s3">
+  <div class="seccion-num c5-secnum">Sección 03</div>
+  <h3>Herramientas de retoque</h3>
+  <div class="concepto"><div class="concepto-titulo">Pincel Corrector Puntual (J)</div><p>Hacés clic sobre una imperfección (mancha, rayadura) y Photoshop la elimina automáticamente tomando la textura del área circundante. El más fácil de usar.</p></div>
+  <div class="concepto"><div class="concepto-titulo">Pincel Corrector (J)</div><p>Similar al puntual, pero vos elegís de dónde tomar la muestra: <kbd>Alt</kbd>+clic para definir el origen, luego pintás sobre la zona a corregir. Más control pero requiere más práctica.</p></div>
+  <div class="concepto"><div class="concepto-titulo">Tampón de Clonar (S)</div><p>Copia píxeles exactos de un origen a otro lugar. <kbd>Alt</kbd>+clic para elegir origen, luego pintás en el destino. Ideal para eliminar objetos o extender fondos.</p></div>
+  <div class="callout am"><div class="callout-label">💡 Para e-commerce</div><p>El Pincel Corrector Puntual se usa para eliminar polvo, rayaduras y reflejos del producto. El Tampón de Clonar para extender o limpiar el fondo. Son las dos herramientas más usadas en retoque de producto.</p></div>
+</section>
+<section class="seccion" id="c5s4">
+  <div class="seccion-num c5-secnum">Sección 04</div>
+  <h3>Atajos — Fotografía y Retoque</h3>
+  <table class="atajos-tabla">
+    <thead><tr><th>Atajo</th><th>Qué hace</th></tr></thead>
+    <tbody>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>L</kbd></td><td>Niveles</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>M</kbd></td><td>Curvas</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>U</kbd></td><td>Tono/Saturación</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>B</kbd></td><td>Balance de color</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>U</kbd></td><td>Desaturar (quitar color)</td></tr>
+      <tr><td><kbd>J</kbd></td><td>Pincel Corrector Puntual / Corrector</td></tr>
+      <tr><td><kbd>S</kbd></td><td>Tampón de Clonar</td></tr>
+      <tr><td><kbd>Alt</kbd>+clic</td><td>Definir punto de origen (tampón y corrector)</td></tr>
+      <tr><td><kbd>C</kbd></td><td>Herramienta Recortar</td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="seccion" id="c5s5">
+  <div class="seccion-num c5-secnum">Sección 05</div>
+  <h3>Ejercicio</h3>
+  <div class="ejercicio">
+    <div class="ejercicio-header"><span class="ej-badge" style="background:#1a5a6b">Ejercicio principal</span><h5>Foto de producto lista para tienda online</h5></div>
+    <div class="ejercicio-body">
+      <p>Vas a preparar una foto de producto con fondo blanco puro, lista para publicar en una tienda online. Plataformas como Mercado Libre exigen fondo blanco #FFFFFF.</p>
+      <div class="pasos">
+        <div class="paso"><span class="paso-n" style="background:#1a5a6b">1</span><p>Abrí la foto de producto. Duplicá la capa: <kbd>Ctrl</kbd>+<kbd>J</kbd>. Siempre trabajás sobre la copia.</p></div>
+        <div class="paso"><span class="paso-n" style="background:#1a5a6b">2</span><p>Recortá el producto con Selección Rápida + Refinar borde. Colocá una capa de relleno blanco debajo.</p></div>
+        <div class="paso"><span class="paso-n" style="background:#1a5a6b">3</span><p>Corrección de exposición: <kbd>Ctrl</kbd>+<kbd>L</kbd> (Niveles). Ajustá los triángulos para que el producto se vea con el brillo correcto.</p></div>
+        <div class="paso"><span class="paso-n" style="background:#1a5a6b">4</span><p>Corrección de color: <kbd>Ctrl</kbd>+<kbd>U</kbd> (Tono/Saturación). Corregí si hay dominante de color. Aumentá ligeramente la saturación.</p></div>
+        <div class="paso"><span class="paso-n" style="background:#1a5a6b">5</span><p>Retoque: usá el Pincel Corrector Puntual (<kbd>J</kbd>) para eliminar manchas, rayaduras o imperfecciones.</p></div>
+        <div class="paso"><span class="paso-n" style="background:#1a5a6b">6</span><p>Sombra: duplicá la capa del producto, rellenala de negro (<kbd>Alt</kbd>+<kbd>Supr</kbd>), colocala debajo, desplazala un poco y aplicá Filtro → Desenfoque → Desenfoque gaussiano (radio 8–12). Opacidad al 25%.</p></div>
+        <div class="paso"><span class="paso-n" style="background:#1a5a6b">7</span><p>Guardá el PSD y exportá como JPG alta calidad.</p></div>
+      </div>
+      <div class="entrega" style="background:#1a5a6b"><span style="font-size:20px">📁</span><div><div class="entrega-label">Entrega</div><p>Subí: <code>tuapellido_producto_ecommerce.psd</code> + <code>tuapellido_producto_ecommerce.jpg</code></p></div></div>
+    </div>
+  </div>
+</section>
+<div class="resumen" style="background:#1a5a6b">
+  <h3>✅ Lo que aprendiste hoy</h3>
+  <ul>
+    <li>Exposición, balance de blancos y conceptos básicos de fotografía digital</li>
+    <li>Niveles, Curvas y Tono/Saturación para corregir fotografías</li>
+    <li>Pincel Corrector Puntual, Tampón de Clonar y Herramienta Parche</li>
+    <li>Cómo preparar una foto de producto profesional para e-commerce</li>
+    <li>Crear sombra artificial para dar realismo a un producto recortado</li>
+  </ul>
+</div>
+</div>
+</section>
+
+
+<footer>Informática Aplicada I · <span style="color:#f5d060">CTT Marketing · Plan 2019</span> · Docente: Gianna Giupponi</footer>
+</body>
+</html>

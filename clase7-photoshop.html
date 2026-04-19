@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 7 de 7 — Photoshop CS6 · CTT Marketing</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ── BASE ── */
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:#fff;color:#1a1a1a;font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.75}
+.topbar{background:#111;color:#aaa;font-family:'JetBrains Mono',monospace;font-size:11px;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;letter-spacing:.05em}
+.topbar a{color:#f5d060;text-decoration:none;font-weight:500}
+.topbar-links{display:flex;gap:18px}.topbar-links a{color:#aaa;text-decoration:none;transition:color .2s}.topbar-links a:hover{color:#f5d060}
+kbd{display:inline-block;background:#111;color:#f5d060;font-family:'JetBrains Mono',monospace;font-size:12px;padding:2px 8px;border-radius:3px;border-bottom:2px solid #444;white-space:nowrap}
+/* ── CLASE HERO ── */
+.clase-hero{padding:60px 48px 44px;position:relative;overflow:hidden;border-bottom:4px solid #111}
+.clase-hero::after{content:'CTT Marketing';position:absolute;right:-8px;bottom:10px;font-family:'Syne',sans-serif;font-size:88px;font-weight:800;color:rgba(255,255,255,.06);line-height:1;pointer-events:none;white-space:nowrap}
+.clase-tag{display:inline-flex;align-items:center;background:rgba(255,255,255,.15);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;border:1px solid rgba(255,255,255,.25)}
+.clase-hero h2{font-family:'Syne',sans-serif;font-size:clamp(30px,4.5vw,52px);font-weight:800;line-height:1.02;max-width:680px;margin-bottom:12px;color:#fff}
+.clase-hero h2 em{color:#f5d060;font-style:normal}
+.clase-hero p.sub{color:rgba(255,255,255,.72);font-size:15px;font-style:italic;max-width:500px}
+/* colores por clase */
+.c3{background:#6b2fa8}.c4{background:#b06000}.c5{background:#1a5a6b}.c6{background:#8b1a1a}.c7{background:#111}
+.c3 .topbar-border{border-bottom-color:#6b2fa8}.c4 .topbar-border{border-bottom-color:#b06000}
+/* ── ÍNDICE ── */
+.indice-wrap{padding:22px 28px;margin:36px 48px;border-left:4px solid #ddd}
+.indice-wrap h3{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#aaa;margin-bottom:10px}
+.indice-wrap ol{padding-left:20px}.indice-wrap ol li{margin-bottom:4px}
+.indice-wrap a{text-decoration:none;font-size:15px;transition:color .2s}.indice-wrap a:hover{text-decoration:underline}
+/* ── CONTENT ── */
+.content{max-width:780px;margin:0 auto;padding:0 48px 80px}
+.seccion{margin-top:54px}
+.seccion-num{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
+.seccion h3{font-family:'Syne',sans-serif;font-size:25px;font-weight:700;border-bottom:3px solid #111;padding-bottom:8px;margin-bottom:18px}
+.seccion h4{font-family:'Syne',sans-serif;font-size:18px;font-weight:600;margin:22px 0 8px}
+.seccion p{margin-bottom:13px}
+/* callouts */
+.callout{border-left:4px solid #ddd;padding:13px 17px;margin:16px 0;border-radius:0 3px 3px 0;font-size:15px}
+.callout p{margin-bottom:0}.callout-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:5px}
+.callout.am{border-color:#b89000;background:#fdf8dc}.callout.am .callout-label{color:#8a6a00}
+.callout.vd{border-color:#1a6b3a;background:#e8f5ed}.callout.vd .callout-label{color:#1a6b3a}
+.callout.rj{border-color:#c01a1a;background:#fdeaea}.callout.rj .callout-label{color:#c01a1a}
+/* concepto box */
+.concepto{background:#111;color:#fff;padding:18px 22px;margin:13px 0}
+.concepto-titulo{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#f5d060;margin-bottom:6px}
+.concepto p{color:#ccc;font-size:14.5px;margin-bottom:0;line-height:1.6}
+/* lista */
+ul.ul-c{list-style:none;padding:0;margin:10px 0 18px}
+ul.ul-c li{padding:7px 0 7px 22px;position:relative;border-bottom:1px solid #e8e8e8;font-size:15px}
+ul.ul-c li:last-child{border-bottom:none}
+ul.ul-c li::before{content:'▸';position:absolute;left:0;font-size:12px}
+/* atajos */
+.atajos-tabla{width:100%;border-collapse:collapse;margin:14px 0 26px;font-size:14px}
+.atajos-tabla thead tr{background:#111;color:#fff}
+.atajos-tabla thead th{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding:9px 13px;text-align:left}
+.atajos-tabla tbody tr:nth-child(even){background:#f5f5f5}
+.atajos-tabla td{padding:8px 13px;border-bottom:1px solid #e8e8e8;vertical-align:middle}
+.atajos-tabla td:first-child{font-family:'JetBrains Mono',monospace;font-weight:700}
+/* pasos */
+.pasos{margin:13px 0}
+.paso{display:flex;gap:13px;margin-bottom:10px;align-items:flex-start}
+.paso-n{color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+.paso p{margin-bottom:0;font-size:14.5px;line-height:1.6}
+/* ejercicio */
+.ejercicio{border:2px solid #111;margin:24px 0}
+.ejercicio-header{background:#111;color:#fff;padding:11px 17px;display:flex;align-items:center;gap:10px}
+.ej-badge{color:#fff;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:3px 10px;flex-shrink:0}
+.ejercicio-header h5{font-family:'Syne',sans-serif;font-size:16px;font-weight:700}
+.ejercicio-body{padding:17px 17px 20px}
+.ejercicio-body p{font-size:15px;margin-bottom:10px}
+/* entrega */
+.entrega{color:#fff;padding:13px 18px;margin-top:11px;display:flex;gap:10px;align-items:flex-start}
+.entrega-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.55);margin-bottom:3px}
+.entrega p{font-size:14px;color:rgba(255,255,255,.9);margin-bottom:0}
+.entrega code{background:rgba(0,0,0,.25);padding:1px 5px;font-family:'JetBrains Mono',monospace;font-size:11px;border-radius:2px}
+/* resumen */
+.resumen{color:#fff;padding:26px 30px;margin-top:44px;border-left:5px solid #f5d060}
+.resumen h3{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#f5d060;margin-bottom:11px}
+.resumen ul{padding-left:18px}.resumen li{font-size:14.5px;color:rgba(255,255,255,.85);margin-bottom:4px}
+/* separador */
+.separador{border:none;border-top:6px solid #111;margin:80px 0 0}
+/* footer */
+footer{background:#111;color:#555;text-align:center;padding:22px 32px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;margin-top:60px}
+/* responsive */
+@media(max-width:600px){.clase-hero,.content{padding-left:20px;padding-right:20px}.indice-wrap{margin:24px 20px}.topbar-links{display:none}}
+
+/* ── COLORES POR CLASE ── */
+/* Clase 3 — Púrpura */
+.c3-color{color:#6b2fa8}.c3-bg-soft{background:#f4eef9}.c3 ul.ul-c li::before{color:#6b2fa8}
+.c3-borde{border-left-color:#6b2fa8!important;background:#f4eef9!important}.c3-borde .callout-label{color:#6b2fa8!important}
+.c3-secnum{color:#6b2fa8}.c3-indice a{color:#6b2fa8}
+/* Clase 4 — Naranja oscuro */
+.c4-color{color:#b06000}.c4-bg-soft{background:#fdf3e3}.c4 ul.ul-c li::before{color:#b06000}
+.c4-borde{border-left-color:#b06000!important;background:#fdf3e3!important}.c4-borde .callout-label{color:#b06000!important}
+.c4-secnum{color:#b06000}.c4-indice a{color:#b06000}
+/* Clase 5 — Verde azulado */
+.c5-color{color:#1a5a6b}.c5-bg-soft{background:#e8f4f7}.c5 ul.ul-c li::before{color:#1a5a6b}
+.c5-borde{border-left-color:#1a5a6b!important;background:#e8f4f7!important}.c5-borde .callout-label{color:#1a5a6b!important}
+.c5-secnum{color:#1a5a6b}.c5-indice a{color:#1a5a6b}
+/* Clase 6 — Rojo oscuro */
+.c6-color{color:#8b1a1a}.c6-bg-soft{background:#faeaea}.c6 ul.ul-c li::before{color:#8b1a1a}
+.c6-borde{border-left-color:#8b1a1a!important;background:#faeaea!important}.c6-borde .callout-label{color:#8b1a1a!important}
+.c6-secnum{color:#8b1a1a}.c6-indice a{color:#8b1a1a}
+/* Clase 7 — Negro / dorado */
+.c7-color{color:#111}.c7-bg-soft{background:#f5f5f5}.c7 ul.ul-c li::before{color:#111}
+.c7-borde{border-left-color:#111!important;background:#f5f5f5!important}.c7-borde .callout-label{color:#111!important}
+.c7-secnum{color:#111}.c7-indice a{color:#111}
+</style>
+
+<body>
+<div class="topbar">
+  <span><a href="index.html">← Inicio</a></span>
+  <div class="topbar-links">
+    <a href="clase1-photoshop.html">C1</a>
+    <a href="clase2-photoshop.html">C2</a>
+    <a href="clase3-photoshop.html">C3</a>
+    <a href="clase4-photoshop.html">C4</a>
+    <a href="clase5-photoshop.html">C5</a>
+    <a href="clase6-photoshop.html">C6</a>
+    <a href="clase7-photoshop.html">C7</a>
+  </div>
+</div>
+<!-- ══════════════════════ CLASE 7 ══════════════════════ -->
+<hr class="separador">
+<section id="c7">
+<header class="clase-hero c7" style="border-bottom:4px solid #f5d060">
+  <div class="clase-tag" style="background:rgba(245,208,96,.15);border-color:rgba(245,208,96,.3)">Clase 7 de 7 · Photoshop CS6</div>
+  <h2>Proyecto<br><em>Final</em></h2>
+  <p class="sub">Integrás todo lo aprendido creando una mini campaña gráfica completa y la presentás al grupo.</p>
+</header>
+<div class="indice-wrap c7-bg-soft" style="border-left-color:#111">
+  <h3>Contenido</h3>
+  <ol>
+    <li><a href="#c7s1" class="c7-color">Repaso general — todo en un lugar</a></li>
+    <li><a href="#c7s2" class="c7-color">El proyecto final — Mini Campaña Gráfica</a></li>
+    <li><a href="#c7s3" class="c7-color">La presentación oral</a></li>
+    <li><a href="#c7s4" class="c7-color">Entrega final</a></li>
+  </ol>
+</div>
+<div class="content">
+<section class="seccion" id="c7s1">
+  <div class="seccion-num c7-secnum">Sección 01</div>
+  <h3>Repaso general — todo en un lugar</h3>
+  <table class="atajos-tabla">
+    <thead><tr><th>Clase</th><th>Qué aprendiste</th><th>Atajos clave</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Interfaz, crear documentos, pintura</td><td><kbd>B</kbd> <kbd>G</kbd> <kbd>I</kbd> <kbd>D</kbd> <kbd>X</kbd></td></tr>
+      <tr><td>2</td><td>Selecciones y fotomontaje</td><td><kbd>W</kbd> <kbd>L</kbd> <kbd>M</kbd> <kbd>Ctrl</kbd>+<kbd>T</kbd></td></tr>
+      <tr><td>3</td><td>Capas y modos de fusión</td><td><kbd>F7</kbd> <kbd>Ctrl</kbd>+<kbd>J</kbd> <kbd>Ctrl</kbd>+<kbd>G</kbd></td></tr>
+      <tr><td>4</td><td>Texto, formas y estilos</td><td><kbd>T</kbd> <kbd>U</kbd> Doble clic en capa</td></tr>
+      <tr><td>5</td><td>Retoque fotográfico</td><td><kbd>J</kbd> <kbd>S</kbd> <kbd>Ctrl</kbd>+<kbd>L</kbd> <kbd>Ctrl</kbd>+<kbd>U</kbd></td></tr>
+      <tr><td>6</td><td>Impresión y exportación</td><td>RGB/CMYK, 300 ppp, <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td></tr>
+    </tbody>
+  </table>
+  <h4>Atajos esenciales del curso</h4>
+  <table class="atajos-tabla">
+    <thead><tr><th>Atajo</th><th>Función</th></tr></thead>
+    <tbody>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>N</kbd></td><td>Nuevo documento</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td>Guardar</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Z</kbd></td><td>Deshacer 1 paso / varios pasos</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>J</kbd></td><td>Duplicar capa</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>T</kbd></td><td>Transformación libre</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>D</kbd></td><td>Deseleccionar</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>0</kbd></td><td>Ajustar vista a la pantalla</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></td><td>Invertir selección</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>L</kbd></td><td>Niveles</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>U</kbd></td><td>Tono/Saturación</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td><td>Guardar para web</td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="seccion" id="c7s2">
+  <div class="seccion-num c7-secnum">Sección 02</div>
+  <h3>El Proyecto Final — Mini Campaña Gráfica</h3>
+  <p>Vas a crear una <strong>mini campaña gráfica coherente</strong> para tu marca. Todas las piezas deben usar los mismos colores, tipografías y estilo. Elegí <strong>2 de las 3 opciones</strong>:</p>
+  <div class="callout am"><div class="callout-label">📋 Opción A — Campaña Digital</div><p><strong>Post de Instagram</strong> 1080×1080 px + <strong>Story de Instagram</strong> 1080×1920 px + <strong>Banner web</strong> 728×90 px</p></div>
+  <div class="callout vd"><div class="callout-label">📋 Opción B — Campaña Impresa</div><p><strong>Flyer A5</strong> 1748×2480 px a 300 ppp, CMYK + <strong>Tarjeta personal</strong> frente y dorso a 300 ppp</p></div>
+  <div class="callout" style="border-color:#555;background:#f5f5f5"><div class="callout-label" style="color:#555">📋 Opción C — Combinada</div><p><strong>Post de Instagram</strong> 1080×1080 px + <strong>Flyer A5</strong> 1748×2480 px a 300 ppp</p></div>
+  <h4>Requisitos obligatorios para todas las piezas</h4>
+  <ul class="ul-c">
+    <li>Coherencia visual: mismos colores, tipografías y estilo en todas las piezas</li>
+    <li>Jerarquía visual clara: el ojo debe recorrer la pieza en orden lógico</li>
+    <li>Presencia de CTA (llamada a la acción) en al menos una pieza</li>
+    <li>PSD con capas organizadas y nombradas (sin capas llamadas "Capa 1")</li>
+    <li>Resolución correcta según destino (web 72 ppp / impresión 300 ppp)</li>
+    <li>Uso de al menos: selección, capas con modos de fusión, texto estilizado y retoque o máscara</li>
+  </ul>
+</section>
+<section class="seccion" id="c7s3">
+  <div class="seccion-num c7-secnum">Sección 03</div>
+  <h3>La Presentación (3–5 minutos)</h3>
+  <p>Al final de la clase cada uno presenta su campaña al grupo. No es necesario hablar de forma perfecta — se trata de poder explicar las decisiones que tomaste.</p>
+  <ul class="ul-c">
+    <li><strong>La marca:</strong> ¿qué producto o servicio ofrece? ¿A quién va dirigida? ¿Por qué esos colores?</li>
+    <li><strong>Las piezas:</strong> ¿qué elegiste hacer y por qué? ¿Qué querías comunicar?</li>
+    <li><strong>Las técnicas:</strong> mencioná al menos 3 herramientas o técnicas de Photoshop que usaste</li>
+    <li><strong>Autocrítica:</strong> ¿qué cambiarías si tuvieras más tiempo? ¿Qué te resultó más difícil?</li>
+  </ul>
+  <div class="callout am"><div class="callout-label">💡 Para la presentación</div><p>En el mundo laboral del marketing, los diseñadores siempre tienen que defender sus propuestas ante clientes y equipos. Esta presentación simula exactamente eso.</p></div>
+</section>
+<section class="seccion" id="c7s4">
+  <div class="seccion-num c7-secnum">Sección 04</div>
+  <h3>Entrega final del proyecto</h3>
+  <div class="ejercicio">
+    <div class="ejercicio-header"><span class="ej-badge" style="background:#444">Entrega completa</span><h5>Carpeta con todos los archivos del proyecto</h5></div>
+    <div class="ejercicio-body">
+      <p>Creá una carpeta llamada <code>tuapellido_campana_final</code> con:</p>
+      <ul class="ul-c">
+        <li>📁 <strong>PSD</strong> — todos los archivos de trabajo con capas</li>
+        <li>📁 <strong>Exportados</strong> — todos los JPG/PNG/PDF listos para usar</li>
+      </ul>
+      <p>Verificá antes de entregar:</p>
+      <ul class="ul-c">
+        <li>Todas las capas tienen nombres descriptivos (no "Capa 1")</li>
+        <li>Los archivos web están en 72 ppp y RGB</li>
+        <li>Los archivos para imprimir están en 300 ppp y CMYK</li>
+        <li>Los archivos exportados se pueden abrir sin Photoshop</li>
+      </ul>
+      <div class="entrega" style="background:#111;border-left:4px solid #f5d060"><span style="font-size:20px">🏆</span><div><div class="entrega-label">Entrega final</div><p>Subí la carpeta comprimida a Classroom: <code>tuapellido_campana_final.zip</code></p></div></div>
+    </div>
+  </div>
+</section>
+<div class="resumen" style="background:#111;border-left-color:#f5d060">
+  <h3>✅ Lo que lograste en este curso</h3>
+  <ul>
+    <li>Dominar la interfaz de Photoshop CS6 y sus herramientas esenciales</li>
+    <li>Crear selecciones y fotomontajes publicitarios</li>
+    <li>Trabajar con capas, modos de fusión y estilos de capa</li>
+    <li>Usar texto, formas y máscaras en diseños complejos</li>
+    <li>Retocar fotografías de producto para e-commerce</li>
+    <li>Diseñar piezas correctamente para pantalla e impresión</li>
+    <li>Crear una campaña gráfica coherente con identidad de marca</li>
+  </ul>
+</div>
+</div>
+</section>
+
+
+<footer>Informática Aplicada I · <span style="color:#f5d060">CTT Marketing · Plan 2019</span> · Photoshop CS6</footer>
+</body>
+</html>

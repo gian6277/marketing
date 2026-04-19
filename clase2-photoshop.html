@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selecciones y Fotomontaje</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--c:#1a6b3a;--cl:#e8f5ed;--n:#111;--b:#fff;--g:#555;--gc:#f2f2f2;--bd:#e0e0e0;--t:#1a1a1a;--am:#b89000;--aml:#fdf8dc}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--b);color:var(--t);font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.75}
+.topbar{background:var(--n);color:#aaa;font-family:'JetBrains Mono',monospace;font-size:11px;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;letter-spacing:.05em;border-bottom:3px solid var(--c)}
+.topbar a{color:#6dbf8a;text-decoration:none;font-weight:500}
+.topbar-links{display:flex;gap:18px}.topbar-links a{color:#aaa;text-decoration:none;transition:color .2s}.topbar-links a:hover{color:#6dbf8a}
+.hero{background:var(--c);color:var(--b);padding:64px 48px 52px;border-bottom:4px solid var(--n);position:relative;overflow:hidden}
+.hero::after{content:'CTT Marketing';position:absolute;right:-8px;bottom:10px;font-family:'Syne',sans-serif;font-size:88px;font-weight:800;color:rgba(255,255,255,.06);line-height:1;pointer-events:none;white-space:nowrap}
+.clase-tag{display:inline-flex;align-items:center;background:rgba(255,255,255,.15);color:var(--b);font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px;border:1px solid rgba(255,255,255,.25)}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(34px,5vw,60px);font-weight:800;line-height:1.02;max-width:680px;margin-bottom:14px}
+.hero h1 em{color:#f5d060;font-style:normal}
+.hero-sub{color:rgba(255,255,255,.72);font-size:16px;font-weight:300;max-width:520px;font-style:italic}
+.hero-meta{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap}
+.hm{border-top:2px solid rgba(255,255,255,.3);padding-top:8px;min-width:100px}
+.hm-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em}
+.hm-val{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--b);margin-top:2px}
+.indice-wrap{background:var(--cl);border-left:4px solid var(--c);padding:22px 28px;margin:40px 48px}
+.indice-wrap h3{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#aaa;margin-bottom:10px}
+.indice-wrap ol{padding-left:20px}.indice-wrap ol li{margin-bottom:4px}
+.indice-wrap a{color:var(--c);text-decoration:none;font-size:15px;transition:color .2s}.indice-wrap a:hover{text-decoration:underline}
+.content{max-width:780px;margin:0 auto;padding:0 48px 100px}
+.seccion{margin-top:58px}
+.seccion-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--c);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
+.seccion h2{font-family:'Syne',sans-serif;font-size:26px;font-weight:700;border-bottom:3px solid var(--n);padding-bottom:9px;margin-bottom:20px}
+.seccion h3{font-family:'Syne',sans-serif;font-size:19px;font-weight:600;margin:26px 0 9px}
+.seccion p{margin-bottom:14px}
+.callout{border-left:4px solid var(--bd);padding:14px 18px;margin:18px 0;border-radius:0 3px 3px 0;font-size:15px}
+.callout p{margin-bottom:0}.callout-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:5px}
+.callout.az{border-color:var(--c);background:var(--cl)}.callout.az .callout-label{color:var(--c)}
+.callout.am{border-color:var(--am);background:var(--aml)}.callout.am .callout-label{color:var(--am)}
+.callout.vd{border-color:var(--c);background:var(--cl)}.callout.vd .callout-label{color:var(--c)}
+.callout.rj{border-color:#c01a1a;background:#fdeaea}.callout.rj .callout-label{color:#c01a1a}
+.concepto{background:var(--n);color:var(--b);padding:20px 22px;margin:14px 0}
+.concepto-titulo{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#f5d060;margin-bottom:7px}
+.concepto p{color:#ccc;font-size:14.5px;margin-bottom:0;line-height:1.6}
+ul.ul-custom{list-style:none;padding:0;margin:12px 0 20px}
+ul.ul-custom li{padding:7px 0 7px 22px;position:relative;border-bottom:1px solid var(--bd);font-size:15.5px}
+ul.ul-custom li:last-child{border-bottom:none}
+ul.ul-custom li::before{content:'▸';position:absolute;left:0;color:var(--c);font-size:12px}
+.herramienta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.herr-item{background:var(--gc);border:1px solid var(--bd);border-top:3px solid var(--c);padding:14px 16px}
+.herr-nombre{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:4px}
+.herr-atajo{font-family:'JetBrains Mono',monospace;font-size:11px;color:#aaa;margin:4px 0}
+.herr-desc{font-size:13px;color:var(--g);line-height:1.5}
+.herr-uso{font-size:12px;color:var(--c);font-style:italic;margin-top:5px}
+.atajos-tabla{width:100%;border-collapse:collapse;margin:16px 0 28px;font-size:14px}
+.atajos-tabla thead tr{background:var(--n);color:var(--b)}
+.atajos-tabla thead th{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding:10px 14px;text-align:left}
+.atajos-tabla tbody tr:nth-child(even){background:var(--gc)}
+.atajos-tabla tbody tr:hover{background:var(--cl)}
+.atajos-tabla td{padding:9px 14px;border-bottom:1px solid var(--bd);vertical-align:middle}
+.atajos-tabla td:first-child{font-family:'JetBrains Mono',monospace;font-weight:700}
+kbd{display:inline-block;background:var(--n);color:#f5d060;font-family:'JetBrains Mono',monospace;font-size:12px;padding:2px 8px;border-radius:3px;border-bottom:2px solid #444;white-space:nowrap}
+.pasos{margin:14px 0}
+.paso{display:flex;gap:14px;margin-bottom:11px;align-items:flex-start}
+.paso-n{background:var(--c);color:var(--b);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+.paso p{margin-bottom:0;font-size:14.5px;line-height:1.6}
+.ejercicio{border:2px solid var(--n);margin:26px 0}
+.ejercicio-header{background:var(--n);color:var(--b);padding:12px 18px;display:flex;align-items:center;gap:10px}
+.ej-badge{background:var(--c);color:var(--b);font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:3px 10px;flex-shrink:0}
+.ejercicio-header h4{font-family:'Syne',sans-serif;font-size:16px;font-weight:700}
+.ejercicio-body{padding:18px 18px 22px}
+.ejercicio-body p{font-size:15px;margin-bottom:10px}
+.entrega{background:var(--c);color:var(--b);padding:14px 20px;margin-top:12px;display:flex;gap:10px;align-items:flex-start}
+.entrega-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+.entrega-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.6);margin-bottom:3px}
+.entrega p{font-size:14px;color:rgba(255,255,255,.92);margin-bottom:0}
+.entrega code{background:rgba(0,0,0,.25);padding:1px 6px;font-family:'JetBrains Mono',monospace;font-size:12px;border-radius:2px}
+.resumen{background:var(--c);color:var(--b);padding:28px 32px;margin-top:48px;border-left:5px solid #f5d060}
+.resumen h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#f5d060;margin-bottom:12px}
+.resumen ul{padding-left:18px}.resumen li{font-size:14.5px;color:rgba(255,255,255,.85);margin-bottom:5px}
+footer{background:var(--n);color:#555;text-align:center;padding:24px 32px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;border-top:3px solid var(--c)}
+footer span{color:#6dbf8a}
+@media(max-width:600px){.hero,.content{padding-left:20px;padding-right:20px}.indice-wrap{margin:28px 20px}.herramienta-grid{grid-template-columns:1fr}.topbar-links{display:none}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span><a href="index.html">← Inicio</a></span>
+  
+</div>
+<header class="hero">
+ 
+  <h1>El Arte de<br><em>Seleccionar</em></h1>
+  <p class="hero-sub">Aprendés a aislar partes de una imagen para editarlas. La técnica base del fotomontaje publicitario.</p>
+  
+</header>
+<div class="indice-wrap">
+  <h3>Contenido de esta clase</h3>
+  <ol>
+    <li><a href="#s1">¿Qué es una selección y para qué sirve?</a></li>
+    <li><a href="#s2">Herramientas de selección geométrica</a></li>
+    <li><a href="#s3">Herramientas de selección por color y forma</a></li>
+    <li><a href="#s4">Refinar y modificar selecciones</a></li>
+    <li><a href="#s5">Herramientas de borrado</a></li>
+    <li><a href="#s6">Transformar y mover selecciones</a></li>
+    <li><a href="#s7">Atajos de teclado de esta clase</a></li>
+    <li><a href="#s8">Ejercicios</a></li>
+  </ol>
+</div>
+<main class="content">
+<section class="seccion" id="s1">
+  <div class="seccion-num">Sección 01</div>
+  <h2>¿Qué es una selección y para qué sirve?</h2>
+  <p>Seleccionar es marcar una zona específica de la imagen para que cualquier edición afecte <strong>solo esa zona</strong> y no el resto. Las selecciones activas se ven como una línea punteada animada (se llama "hormigas marchando").</p>
+  <p>En Marketing, las selecciones se usan constantemente para:</p>
+  <ul class="ul-custom">
+    <li>Recortar un producto de su fondo para ponerlo sobre otro (fotomontaje publicitario)</li>
+    <li>Cambiar el color de un objeto sin afectar lo que lo rodea</li>
+    <li>Aplicar efectos o ajustes solo a una parte de la imagen</li>
+    <li>Copiar un elemento de una imagen y pegarlo en otra</li>
+  </ul>
+  <div class="callout am"><div class="callout-label">💡 Dato de industria</div><p>Las fotografías de autos en paisajes espectaculares, de personas en playas perfectas, de comida flotando en el aire — todo son fotomontajes. El producto se fotografió en estudio y el fondo se agregó después con esta técnica.</p></div>
+</section>
+<section class="seccion" id="s2">
+  <div class="seccion-num">Sección 02</div>
+  <h2>Herramientas de selección geométrica</h2>
+  <div class="herramienta-grid">
+    <div class="herr-item"><div class="herr-nombre">Selección Rectangular</div><div class="herr-atajo">Atajo: <kbd>M</kbd></div><div class="herr-desc">Selecciona áreas rectangulares. Mantené <kbd>Shift</kbd> mientras arrastrás para hacer un cuadrado perfecto.</div><div class="herr-uso">Uso: seleccionar áreas de texto, banners, recuadros.</div></div>
+    <div class="herr-item"><div class="herr-nombre">Selección Elíptica</div><div class="herr-atajo">Atajo: <kbd>Shift</kbd>+<kbd>M</kbd> para alternar</div><div class="herr-desc">Selecciona áreas ovaladas o circulares. Mantené <kbd>Shift</kbd> para círculo perfecto.</div><div class="herr-uso">Uso: recortar retratos, crear elementos circulares.</div></div>
+  </div>
+  <h3>Opciones comunes (barra de opciones)</h3>
+  <ul class="ul-custom">
+    <li><strong>Añadir a la selección:</strong> mantené <kbd>Shift</kbd> y arrastrá para sumar una zona</li>
+    <li><strong>Restar de la selección:</strong> mantené <kbd>Alt</kbd> y arrastrá para quitar una zona</li>
+    <li><strong>Calado (Feather):</strong> suaviza el borde. 0 = borde definido; 20–30 px = borde difuminado</li>
+  </ul>
+</section>
+<section class="seccion" id="s3">
+  <div class="seccion-num">Sección 03</div>
+  <h2>Herramientas de selección por color y forma</h2>
+  <div class="herramienta-grid">
+    <div class="herr-item"><div class="herr-nombre">Lazo simple</div><div class="herr-atajo">Atajo: <kbd>L</kbd></div><div class="herr-desc">Dibujás libremente con el mouse. Al soltar, cierra la selección. Difícil de controlar con precisión.</div><div class="herr-uso">Uso: selecciones aproximadas de formas orgánicas.</div></div>
+    <div class="herr-item"><div class="herr-nombre">Lazo Poligonal</div><div class="herr-atajo">Atajo: <kbd>Shift</kbd>+<kbd>L</kbd> para alternar</div><div class="herr-desc">Hacés clic punto a punto para crear líneas rectas. Doble clic para cerrar. Mucho más preciso que el lazo simple.</div><div class="herr-uso">Uso: recortar objetos con bordes rectos (cajas, autos, muebles).</div></div>
+    <div class="herr-item"><div class="herr-nombre">Lazo Magnético</div><div class="herr-atajo">Atajo: <kbd>Shift</kbd>+<kbd>L</kbd> para alternar</div><div class="herr-desc">Se "pega" automáticamente a los bordes según el contraste. Muy útil cuando hay diferencia de color clara entre objeto y fondo.</div><div class="herr-uso">Uso: objetos con buen contraste con su fondo.</div></div>
+    <div class="herr-item"><div class="herr-nombre">Varita Mágica</div><div class="herr-atajo">Atajo: <kbd>W</kbd></div><div class="herr-desc">Selecciona píxeles del mismo color con un solo clic. La <strong>Tolerancia</strong> controla cuántos colores similares incluye.</div><div class="herr-uso">Uso: fondos de color sólido o uniforme.</div></div>
+    <div class="herr-item"><div class="herr-nombre">Selección Rápida ⭐</div><div class="herr-atajo">Atajo: <kbd>Shift</kbd>+<kbd>W</kbd> para alternar</div><div class="herr-desc">Pintás sobre el objeto y Photoshop detecta sus bordes automáticamente. La más recomendada para principiantes. <kbd>Alt</kbd>+arrastrar para restar.</div><div class="herr-uso">Uso: ¡la más versátil! Para recortar casi cualquier cosa.</div></div>
+  </div>
+  <div class="callout vd"><div class="callout-label">✅ Recomendación</div><p>Empezá siempre con la <strong>Selección Rápida</strong>. Si no funciona bien, probá con la Varita Mágica. El Lazo Poligonal es ideal para objetos con bordes rectos.</p></div>
+</section>
+<section class="seccion" id="s4">
+  <div class="seccion-num">Sección 04</div>
+  <h2>Refinar y modificar selecciones</h2>
+  <h3>Refinar borde (en CS6)</h3>
+  <p>Después de hacer una selección, hacé clic en <strong>"Refinar borde"</strong> en la barra de opciones (o ir a Selección → Refinar borde):</p>
+  <ul class="ul-custom">
+    <li><strong>Radio inteligente:</strong> activalo para bordes complejos (pelo, pelaje)</li>
+    <li><strong>Suavizar:</strong> redondea los bordes dentados</li>
+    <li><strong>Calar:</strong> difumina el borde</li>
+    <li><strong>Contraer/Expandir:</strong> achica o agranda la selección en píxeles</li>
+    <li><strong>Salida a:</strong> elegí "Nueva capa con máscara de capa" para el mejor resultado</li>
+  </ul>
+  <div class="callout rj"><div class="callout-label">⚠️ Truco clave</div><p>Cuando el fondo es de un solo color, es <strong>más fácil seleccionar el fondo</strong> con la Varita Mágica y luego invertir la selección con <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd> para quedarte con el objeto.</p></div>
+</section>
+<section class="seccion" id="s5">
+  <div class="seccion-num">Sección 05</div>
+  <h2>Herramientas de borrado</h2>
+  <div class="concepto"><div class="concepto-titulo">Borrador simple (E)</div><p>Borra lo que pasás por encima. Tiene las mismas opciones que el Pincel: tamaño, dureza, opacidad. Atajo: <kbd>E</kbd>.</p></div>
+  <div class="concepto"><div class="concepto-titulo">Borrador de fondo (Shift+E)</div><p>Borra automáticamente el color que esté en el centro del cursor, respetando los bordes. Útil para eliminar fondos simples.</p></div>
+  <div class="concepto"><div class="concepto-titulo">Borrador mágico (Shift+E)</div><p>Hace clic y elimina todos los píxeles del mismo color en esa zona. Muy rápido para eliminar fondos de color sólido.</p></div>
+  <div class="callout az"><div class="callout-label">💡 Consejo profesional</div><p>En lo posible, evitá borrar directamente sobre la imagen. Es mejor usar <strong>máscaras de capa</strong> (las verás en la Clase 4) que ocultan sin borrar definitivamente — podés deshacer el borrado en cualquier momento.</p></div>
+</section>
+<section class="seccion" id="s6">
+  <div class="seccion-num">Sección 06</div>
+  <h2>Transformar y mover selecciones</h2>
+  <h3>Transformación libre</h3>
+  <p><kbd>Ctrl</kbd>+<kbd>T</kbd> activa la Transformación libre. Aparecen manijas alrededor del elemento:</p>
+  <ul class="ul-custom">
+    <li><strong>Escalar:</strong> arrastrás las manijas de las esquinas. Mantené <kbd>Shift</kbd> para mantener proporciones.</li>
+    <li><strong>Rotar:</strong> colocás el cursor afuera de las manijas hasta que aparezca la flecha curva y arrastrás.</li>
+    <li>Para aplicar: <kbd>Enter</kbd>. Para cancelar: <kbd>Esc</kbd>.</li>
+  </ul>
+  <h3>Copiar y pegar selecciones</h3>
+  <ul class="ul-custom">
+    <li><kbd>Ctrl</kbd>+<kbd>C</kbd> — Copiar la selección</li>
+    <li><kbd>Ctrl</kbd>+<kbd>V</kbd> — Pegar (crea una nueva capa automáticamente)</li>
+    <li><kbd>Ctrl</kbd>+<kbd>J</kbd> — Copiar la selección a una nueva capa (más rápido)</li>
+  </ul>
+</section>
+<section class="seccion" id="s7">
+  <div class="seccion-num">Sección 07</div>
+  <h2>Atajos de teclado de esta clase</h2>
+  <table class="atajos-tabla">
+    <thead><tr><th>Atajo</th><th>Qué hace</th><th>Contexto</th></tr></thead>
+    <tbody>
+      <tr><td><kbd>M</kbd></td><td>Selección rectangular o elíptica</td><td>Alternar con <kbd>Shift</kbd>+<kbd>M</kbd></td></tr>
+      <tr><td><kbd>L</kbd></td><td>Lazo (simple, poligonal, magnético)</td><td>Alternar con <kbd>Shift</kbd>+<kbd>L</kbd></td></tr>
+      <tr><td><kbd>W</kbd></td><td>Varita mágica / Selección rápida</td><td>Alternar con <kbd>Shift</kbd>+<kbd>W</kbd></td></tr>
+      <tr><td><kbd>V</kbd></td><td>Herramienta Mover</td><td>Para mover capas o selecciones</td></tr>
+      <tr><td><kbd>E</kbd></td><td>Borrador</td><td>Alternar tipo con <kbd>Shift</kbd>+<kbd>E</kbd></td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>D</kbd></td><td>Deseleccionar</td><td>Quita las "hormigas marchando"</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></td><td>Invertir selección</td><td>Selecciona lo que NO estaba seleccionado</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>A</kbd></td><td>Seleccionar todo</td><td>Selecciona todo el documento</td></tr>
+      <tr><td><kbd>Shift</kbd>+arrastrar</td><td>Añadir a selección</td><td>Suma zonas a la selección activa</td></tr>
+      <tr><td><kbd>Alt</kbd>+arrastrar</td><td>Restar de selección</td><td>Quita zonas de la selección activa</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>T</kbd></td><td>Transformación libre</td><td>Escalar, rotar, distorsionar</td></tr>
+      <tr><td><kbd>Shift</kbd>+arrastrar esquina</td><td>Escalar proporcionalmente</td><td>Dentro de transformación libre</td></tr>
+      <tr><td><kbd>Enter</kbd></td><td>Aplicar transformación</td><td>Confirmar cambios</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>J</kbd></td><td>Copiar selección a nueva capa</td><td>Duplica la zona seleccionada</td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="seccion" id="s8">
+  <div class="seccion-num">Sección 08</div>
+  <h2>Ejercicios de la clase</h2>
+  <div class="ejercicio">
+    <div class="ejercicio-header"><span class="ej-badge">Ejercicio 1</span><h4>Cambio de color de producto</h4></div>
+    <div class="ejercicio-body">
+      <p>En e-commerce es muy común mostrar el mismo producto en varios colores. Vas a seleccionar un objeto de color uniforme y cambiarle el color.</p>
+      <div class="pasos">
+        <div class="paso"><span class="paso-n">1</span><p>Abrí una imagen de producto de un solo color (remera, bolsa, zapato, etc.).</p></div>
+        <div class="paso"><span class="paso-n">2</span><p>Seleccioná la Varita Mágica (<kbd>W</kbd>). Hacé clic sobre el objeto. Ajustá la Tolerancia si selecciona demasiado o muy poco. Usá <kbd>Shift</kbd>+clic para agregar zonas no seleccionadas.</p></div>
+        <div class="paso"><span class="paso-n">3</span><p>Con la selección activa: <strong>Imagen → Ajustes → Tono/Saturación</strong> (<kbd>Ctrl</kbd>+<kbd>U</kbd>). Activá "Colorear" y mové el control de Tono para cambiar el color.</p></div>
+        <div class="paso"><span class="paso-n">4</span><p>Repetí para crear 3 versiones del producto en distintos colores. Guardá cada una como JPG.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="ejercicio">
+    <div class="ejercicio-header"><span class="ej-badge">Ejercicio 2 — Principal</span><h4>Fotomontaje publicitario: producto en nuevo contexto</h4></div>
+    <div class="ejercicio-body">
+      <p>Las marcas colocan sus productos en contextos aspiracionales: una bebida en la playa, zapatillas en la ciudad. Vas a hacer exactamente eso.</p>
+      <p><strong>Necesitás:</strong> una imagen de producto + una imagen de fondo (paisaje, ciudad, interior).</p>
+      <div class="pasos">
+        <div class="paso"><span class="paso-n">1</span><p>Abrí la imagen del producto. Usá la <strong>Selección Rápida</strong> (<kbd>W</kbd>) y arrastrá sobre el producto para seleccionarlo.</p></div>
+        <div class="paso"><span class="paso-n">2</span><p>Usá <kbd>Alt</kbd>+arrastrar para restar las zonas que no deberían estar seleccionadas.</p></div>
+        <div class="paso"><span class="paso-n">3</span><p>Hacé clic en <strong>"Refinar borde"</strong>. Activá "Radio inteligente", ajustá el radio. En "Salida a" elegí "Nueva capa con máscara de capa". OK.</p></div>
+        <div class="paso"><span class="paso-n">4</span><p>Copiá la capa del producto recortado (<kbd>Ctrl</kbd>+<kbd>C</kbd>). Abrí la imagen de fondo (<kbd>Ctrl</kbd>+<kbd>O</kbd>). Pegá el producto (<kbd>Ctrl</kbd>+<kbd>V</kbd>).</p></div>
+        <div class="paso"><span class="paso-n">5</span><p>Usá Transformación libre (<kbd>Ctrl</kbd>+<kbd>T</kbd>) para ajustar el tamaño. Mantené <kbd>Shift</kbd> al escalar para no deformar. Confirmá con <kbd>Enter</kbd>.</p></div>
+        <div class="paso"><span class="paso-n">6</span><p>Revisá los bordes del recorte. Si quedan bordes blancos, usá el Borrador con punta suave (dureza 0%) para limpiarlos.</p></div>
+        <div class="paso"><span class="paso-n">7</span><p>Guardá como PSD: <code>tuapellido_fotomontaje.psd</code> y exportá como JPG.</p></div>
+      </div>
+      <div class="callout am" style="margin-top:14px"><div class="callout-label">💡 Para pensar — Marketing</div><p>¿Por qué elegiste ese fondo para ese producto? ¿Qué transmite el contexto sobre la marca? ¿A qué tipo de consumidor apunta esa imagen?</p></div>
+      <div class="entrega"><span class="entrega-icon">📁</span><div><div class="entrega-label">Entrega de la clase</div><p>Subí a Classroom: <code>tuapellido_colores.jpg</code> (3 versiones) + <code>tuapellido_fotomontaje.psd</code> + <code>tuapellido_fotomontaje.jpg</code></p></div></div>
+    </div>
+  </div>
+</section>
+<div class="resumen">
+  <h3>✅ Lo que aprendiste hoy</h3>
+  <ul>
+    <li>Qué es una selección y por qué es la técnica base del retoque fotográfico</li>
+    <li>Selección Rápida y Varita Mágica: las herramientas más usadas en el trabajo real</li>
+    <li>Lazo simple, poligonal y magnético para formas complejas</li>
+    <li>Cómo refinar bordes con "Refinar borde" para recortes prolijos</li>
+    <li>Cómo invertir, sumar y restar zonas a una selección</li>
+    <li>Transformación libre para escalar y rotar elementos</li>
+    <li>Cómo armar un fotomontaje publicitario</li>
+  </ul>
+</div>
+</main>
+<footer>Informática Aplicada I · <span>CTT Marketing · Plan 2019</span>· Docente: Gianna Giupponi</footer>
+</body>
+</html>
