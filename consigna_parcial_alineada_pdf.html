@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parcial — Adobe Photoshop</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #009fe3;
+    --azul-dark: #0077b6;
+    --negro: #0d0d0d;
+    --gris-dark: #1a1a1a;
+    --gris-mid: #2d2d2d;
+    --gris-light: #999;
+    --blanco: #f5f5f5;
+    --acento: #ffd60a;
+    --dorado: #c9a84c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', sans-serif; background: var(--negro); color: var(--blanco); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,13,13,0.96); backdrop-filter: blur(10px);
+    border-bottom: 1px solid #222;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 60px;
+  }
+  .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 0.9rem; color: var(--azul); letter-spacing: 0.05em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 0.2rem; list-style: none; }
+  .nav-links a {
+    display: block; padding: 0.4rem 0.9rem;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--gris-light);
+    text-decoration: none; border-radius: 3px; transition: color 0.2s, background 0.2s;
+  }
+  .nav-links a:hover { color: var(--blanco); background: #222; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 6rem 2rem 4rem; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -200px; left: 50%;
+    transform: translateX(-50%); width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(0,159,227,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-logo { width: 180px; max-width: 50vw; margin-bottom: 2.5rem; }
+  .hero-tag {
+    display: inline-block; font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--azul); background: rgba(0,159,227,0.1); border: 1px solid rgba(0,159,227,0.3);
+    padding: 0.35rem 1rem; border-radius: 2px; margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: clamp(3.5rem, 10vw, 7rem); line-height: 0.9;
+    text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1rem;
+  }
+  .hero h1 span { color: var(--azul); display: block; }
+  .hero-sub { font-size: 1rem; font-weight: 300; color: var(--gris-light); margin-bottom: 2.5rem; }
+  .hero-badges { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .badge { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.5rem 1.2rem; border-radius: 2px; }
+  .badge-outline { border: 1px solid #333; color: var(--gris-light); }
+  .badge-filled { background: var(--azul); color: white; }
+
+  /* SECCIONES */
+  section { padding: 6rem 2rem; max-width: 900px; margin: 0 auto; }
+  .section-num { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--azul); margin-bottom: 0.5rem; display: block; }
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3.2rem); text-transform: uppercase; line-height: 1; margin-bottom: 0.6rem; }
+  .section-desc { color: var(--gris-light); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2.5rem; max-width: 640px; }
+
+  .divider { height: 1px; background: linear-gradient(90deg, var(--azul), transparent); margin: 0 auto; max-width: 900px; }
+
+  /* OPCIONES */
+  .opciones { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #1e1e1e; border-radius: 4px; overflow: hidden; margin-bottom: 2rem; }
+  @media(max-width: 600px) { .opciones { grid-template-columns: 1fr; } }
+  .opcion { background: var(--gris-dark); padding: 2rem; }
+  .opcion-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; }
+  .opcion-letra {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 2.5rem;
+    line-height: 1; color: var(--azul); opacity: 0.3;
+  }
+  .opcion-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .opcion-sub { font-size: 0.8rem; color: var(--gris-light); margin-top: 0.1rem; }
+  .piezas { display: flex; flex-direction: column; gap: 1px; }
+  .pieza { background: #111; padding: 0.9rem 1rem; display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; align-items: center; }
+  .pieza-nombre { font-size: 0.85rem; font-weight: 500; color: var(--blanco); }
+  .pieza-detalle { font-size: 0.75rem; color: var(--gris-light); margin-top: 0.2rem; }
+  .pieza-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; padding: 0.2rem 0.5rem; border-radius: 2px; white-space: nowrap; }
+  .badge-rgb { background: rgba(0,159,227,0.15); color: var(--azul); border: 1px solid rgba(0,159,227,0.3); }
+  .badge-cmyk { background: rgba(201,168,76,0.15); color: var(--dorado); border: 1px solid rgba(201,168,76,0.3); }
+
+  /* ITEMS */
+  .items { display: flex; flex-direction: column; gap: 1px; background: #1e1e1e; border-radius: 4px; overflow: hidden; }
+  .item { background: var(--gris-dark); padding: 1.5rem 2rem; display: flex; gap: 1.5rem; align-items: flex-start; transition: background 0.2s; }
+  .item:hover { background: #222; }
+  .item-num { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 900; color: rgba(0,159,227,0.2); line-height: 1; min-width: 2.5rem; padding-top: 0.1rem; }
+  .item-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+  .item-text { font-size: 0.875rem; color: var(--gris-light); line-height: 1.65; }
+  .item-sub { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.6rem; background: rgba(0,159,227,0.1); border: 1px solid rgba(0,159,227,0.25); color: var(--azul); border-radius: 2px; }
+
+  /* CARDS */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: #1e1e1e; border-radius: 4px; overflow: hidden; }
+  .card { background: var(--gris-dark); padding: 2rem; transition: background 0.2s; }
+  .card:hover { background: #222; }
+  .card-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+  .card-text { font-size: 0.875rem; color: var(--gris-light); line-height: 1.65; }
+
+  /* CONDICIONES */
+  .cond-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: #1e1e1e; border-radius: 4px; overflow: hidden; margin-bottom: 2rem; }
+  .cond { background: var(--gris-dark); padding: 1.8rem; }
+  .cond-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul); margin-bottom: 0.5rem; display: block; }
+  .cond-value { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 900; line-height: 1.1; }
+  .cond-small { font-size: 0.78rem; color: var(--gris-light); margin-top: 0.3rem; }
+
+  /* ESTRUCTURA */
+  .estructura { background: #111; border: 1px solid #222; border-radius: 4px; padding: 1.5rem 2rem; font-family: monospace; font-size: 0.82rem; color: #666; line-height: 2; margin-bottom: 1.5rem; }
+  .estructura .dir { color: var(--azul); }
+  .estructura .file { color: #888; }
+  .estructura .note { color: #444; font-style: italic; }
+
+  /* ALERT */
+  .alert { display: flex; gap: 1rem; align-items: flex-start; background: rgba(255,214,10,0.05); border-left: 3px solid var(--acento); padding: 1.2rem 1.5rem; border-radius: 0 4px 4px 0; margin-top: 1.5rem; }
+  .alert-icon { font-size: 1.2rem; margin-top: 0.1rem; }
+  .alert-text { font-size: 0.875rem; color: #ccc; line-height: 1.65; }
+  .alert-text strong { color: var(--acento); }
+
+  footer { border-top: 1px solid #1e1e1e; padding: 2.5rem; text-align: center; }
+  footer p { font-size: 0.8rem; color: #444; letter-spacing: 0.05em; }
+  footer strong { color: #666; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Parcial · Adobe Photoshop</div>
+  <ul class="nav-links">
+    <li><a href="#consigna">Consigna</a></li>
+    <li><a href="#presentacion">Presentación</a></li>
+    <li><a href="#condiciones">Condiciones</a></li>
+    <li><a href="#entrega">Entrega</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-logo" src="https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/test/images/Logo%20UTU%20PNG/Logo%20UTU%20-%20Escudo%20Dorado%20Letras%20Blancas%20Fondo%20Transparente.png" alt="UTU">
+  <div class="hero-tag">Informática Aplicada I · CTT Marketing</div>
+  <h1>Parcial<span>Adobe Photoshop</span></h1>
+  <p class="hero-sub">Docente: Gianna Giupponi · Fecha de entrega: 30 de junio de 2026</p>
+  
+</section>
+
+<div class="divider"></div>
+
+<!-- CONSIGNA -->
+<section id="consigna">
+  <span class="section-num reveal">01 — Consigna</span>
+  <h2 class="section-title reveal">El trabajo en<br>Photoshop</h2>
+  <p class="section-desc reveal">Diseñar una campaña gráfica coherente para una marca de tu elección (producto o servicio). Todas las piezas deben compartir la misma identidad visual: paleta de colores, tipografía y estilo general. <strong>Elegí una de las dos opciones:</strong></p>
+
+  <div class="opciones reveal">
+    <div class="opcion">
+      <div class="opcion-header">
+        <div class="opcion-letra">A</div>
+        <div>
+          <div class="opcion-title">Mini Campaña Gráfica</div>
+          <div class="opcion-sub">Digital + Impresión · RGB y CMYK</div>
+        </div>
+      </div>
+      <div class="piezas">
+        <div class="pieza">
+          <div>
+            <div class="pieza-nombre">Post de Instagram</div>
+            <div class="pieza-detalle">1080 × 1080 px · 72 ppp · PSD + JPG</div>
+          </div>
+          <span class="pieza-badge badge-rgb">RGB</span>
+        </div>
+        <div class="pieza">
+          <div>
+            <div class="pieza-nombre">Story de Instagram</div>
+            <div class="pieza-detalle">1080 × 1920 px · 72 ppp · PSD + JPG</div>
+          </div>
+          <span class="pieza-badge badge-rgb">RGB</span>
+        </div>
+        <div class="pieza">
+          <div>
+            <div class="pieza-nombre">Flyer A5 para imprimir</div>
+            <div class="pieza-detalle">1748 × 2480 px · 300 ppp · PSD + PDF</div>
+          </div>
+          <span class="pieza-badge badge-cmyk">CMYK</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="opcion">
+      <div class="opcion-header">
+        <div class="opcion-letra">B</div>
+        <div>
+          <div class="opcion-title">Pack de Redes Sociales</div>
+          <div class="opcion-sub">Solo digital · Todo en RGB</div>
+        </div>
+      </div>
+      <div class="piezas">
+        <div class="pieza">
+          <div>
+            <div class="pieza-nombre">Post de Instagram</div>
+            <div class="pieza-detalle">1080 × 1080 px · 72 ppp · PSD + JPG</div>
+          </div>
+          <span class="pieza-badge badge-rgb">RGB</span>
+        </div>
+        <div class="pieza">
+          <div>
+            <div class="pieza-nombre">Story de Instagram</div>
+            <div class="pieza-detalle">1080 × 1920 px · 72 ppp · PSD + JPG</div>
+          </div>
+          <span class="pieza-badge badge-rgb">RGB</span>
+        </div>
+        <div class="pieza">
+          <div>
+            <div class="pieza-nombre">Banner web</div>
+            <div class="pieza-detalle">1200 × 300 px · 72 ppp · PSD + JPG/PNG</div>
+          </div>
+          <span class="pieza-badge badge-rgb">RGB</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards reveal">
+    <div class="card">
+      <span class="card-icon">📐</span>
+      <div class="card-title">Capas organizadas</div>
+      <div class="card-text">Cada pieza en su propio PSD. Capas con nombres descriptivos en grupos: Fondo / Imagen / Texto / Elementos gráficos. Sin "Capa 1".</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎨</span>
+      <div class="card-title">Coherencia visual</div>
+      <div class="card-text">Misma paleta de colores, tipografía y estilo en las tres piezas. Deben verse como parte de la misma campaña.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚙️</span>
+      <div class="card-title">Técnicas aplicadas</div>
+      <div class="card-text">Selección con máscara, modos de fusión, jerarquía tipográfica y estilos de capa. Contenidos de al menos 4 clases del curso.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRESENTACIÓN -->
+
+<div class="divider"></div>
+
+<section id="identidad">
+  <span class="section-num reveal">02 — Conceptos clave</span>
+  <h2 class="section-title reveal">Identidad<br>visual</h2>
+  <p class="section-desc reveal">Antes de diseñar una campaña, es importante comprender los elementos que permiten construir una identidad visual coherente.</p>
+
+  <div class="cards reveal">
+    <div class="card">
+      <div class="card-title">Paleta de colores</div>
+      <div class="card-text">Es el conjunto de colores que representa a la marca y se utiliza de forma consistente en todas las piezas. Debe incluir un color principal, un color secundario y un color de acento para destacar elementos importantes.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Tipografía</div>
+      <div class="card-text">Es la fuente o conjunto de fuentes utilizadas por la marca. La tipografía comunica personalidad y debe mantenerse consistente en títulos y textos secundarios en toda la campaña.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Estilo general</div>
+      <div class="card-text">Es el conjunto de decisiones visuales que hace que todas las piezas parezcan pertenecer a la misma campaña: uso de fotografías o ilustraciones, bordes, texturas, composición y estética general.</div>
+    </div>
+  </div>
+</section>
+
+<section id="presentacion">
+  <span class="section-num reveal">02 — Presentación oral</span>
+  <h2 class="section-title reveal">Qué incluir en<br>la presentación</h2>
+  <p class="section-desc reveal">Utilizando <strong>Prezi</strong>, el tiempo de exposición será de 10 a 15 minutos, sin leer desde la pantalla ni desde apuntes. El diseño del Prezi debe mantener la misma identidad visual de la campaña presentada. Si es en pareja, ambos deben hablar en partes equivalentes.</p>
+
+  <div class="items">
+    <div class="item reveal">
+      <div class="item-num">01</div>
+      <div class="item-content">
+        <div class="item-title">Quiénes son</div>
+        <div class="item-text">Presentación del equipo, roles en el proyecto y cómo se organizaron.</div>
+      </div>
+    </div>
+    <div class="item reveal">
+      <div class="item-num">02</div>
+      <div class="item-content">
+        <div class="item-title">Identidad visual</div>
+        <div class="item-text">Justificar las decisiones de la identidad de la marca:</div>
+        <div class="item-sub">
+          <span class="tag">Paleta de colores</span>
+          <span class="tag">Tipografía</span>
+          <span class="tag">Estilo general</span>
+        </div>
+        <div class="item-text" style="margin-top:0.7rem">¿Qué transmite cada decisión? ¿Por qué es coherente con la marca?</div>
+      </div>
+    </div>
+    <div class="item reveal">
+      <div class="item-num">03</div>
+      <div class="item-content">
+        <div class="item-title">Público objetivo</div>
+        <div class="item-text">Describir en detalle a quién va dirigida la campaña:</div>
+        <div class="item-sub">
+          <span class="tag">Edad</span>
+          <span class="tag">Intereses</span>
+          <span class="tag">Necesidades</span>
+        </div>
+        <div class="item-text" style="margin-top:0.7rem">¿Por qué la campaña está pensada específicamente para ese público?</div>
+      </div>
+    </div>
+    <div class="item reveal">
+      <div class="item-num">04</div>
+      <div class="item-content">
+        <div class="item-title">Decisiones de diseño</div>
+        <div class="item-text">Más allá de mostrar las piezas, justificar:</div>
+        <div class="item-sub">
+          <span class="tag">Ubicación de elementos</span>
+          <span class="tag">Jerarquía visual</span>
+          <span class="tag">Foco de atención</span>
+        </div>
+        <div class="item-text" style="margin-top:0.7rem">¿Por qué ubicaron los elementos de determinada manera? ¿Qué elemento buscaron que llamara primero la atención?</div>
+      </div>
+    </div>
+    <div class="item reveal">
+      <div class="item-num">05</div>
+      <div class="item-content">
+        <div class="item-title">Resultados esperados</div>
+        <div class="item-text">¿Qué acción esperan que realice el usuario al ver la pieza?</div>
+        <div class="item-sub">
+          <span class="tag">Comprar un producto</span>
+          <span class="tag">Seguir una cuenta</span>
+          <span class="tag">Solicitar información</span>
+          <span class="tag">Participar en una promoción</span>
+        </div>
+      </div>
+    </div>
+    
+        
+    <div class="item reveal">
+      <div class="item-num">06</div>
+      <div class="item-content">
+        <div class="item-title">Coherencia de campaña</div>
+        <div class="item-text">Explicar cómo lograron que las tres piezas se perciban como parte de una misma campaña visual.</div>
+        <div class="item-sub">
+          <span class="tag">Paleta compartida</span>
+          <span class="tag">Tipografía consistente</span>
+          <span class="tag">Estilo visual común</span>
+          <span class="tag">Adaptación a formatos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item reveal">
+      <div class="item-num">07</div>
+      <div class="item-content">
+        <div class="item-title">Paleta de colores</div>
+        <div class="item-text">Identificar color principal y color secundario. Explicar qué comunica cada uno e indicar los códigos HEX utilizados.</div>
+      </div>
+    </div>
+<div class="item reveal">
+      <div class="item-num">08</div>
+      <div class="item-content">
+    <div class="item-title">Técnicas utilizadas</div>
+        <div class="item-text">Al menos 3 herramientas o técnicas de Photoshop usadas en el trabajo. Deben indicar en qué pieza se aplicaron, qué problema resolvían y qué resultado visual permitieron obtener. Deben provenir de distintas clases del curso.</div>
+      </div>
+    </div>
+
+    <div class="item reveal">
+      <div class="item-num">09</div>
+      <div class="item-content">
+        <div class="item-title">Proceso de creación</div>
+        <div class="item-text">¿Cómo llegaron al resultado final? ¿Qué decisiones tomaron en el camino? ¿Qué descartaron y por qué?</div>
+      </div>
+    </div>
+    
+   
+
+</div>
+
+  <div class="alert reveal">
+    <span class="alert-icon">⚠️</span>
+    <div class="alert-text"><strong>Prohibido leer.</strong> Las pantallas del Prezi deben tener palabras clave e imágenes, no texto corrido. Si la presentación es en pareja, ambos deben hablar en partes equivalentes.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONDICIONES -->
+<section id="condiciones">
+  <span class="section-num reveal">03 — Condiciones</span>
+  <h2 class="section-title reveal">Condiciones<br>del parcial</h2>
+  <p class="section-desc reveal">El trabajo en Photoshop se realiza íntegramente en clase. No se acepta trabajo realizado fuera del horario de clase.</p>
+
+  <div class="cond-grid reveal">
+    <div class="cond">
+      <span class="cond-label">Modalidad</span>
+      <div class="cond-value">Individual<br>o en pareja</div>
+    </div>
+    <div class="cond">
+      <span class="cond-label">Realización</span>
+      <div class="cond-value">En clase</div>
+      <div class="cond-small">3 horas semanales</div>
+    </div>
+    <div class="cond">
+      <span class="cond-label">Presentación</span>
+      <div class="cond-value">10–15 min</div>
+      <div class="cond-small">Con Prezi · Sin leer</div>
+    </div>
+    <div class="cond">
+      <span class="cond-label">Fecha límite</span>
+      <div class="cond-value">30 de junio de 2026</div>
+      <div class="cond-small">Entrega + presentación</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ENTREGA -->
+<section id="entrega">
+  <span class="section-num reveal">04 — Entrega</span>
+  <h2 class="section-title reveal">Formato<br>de entrega</h2>
+  <p class="section-desc reveal">La entrega se realiza en Google Classroom antes de la presentación oral. Carpeta comprimida .zip con la siguiente estructura:</p>
+
+  <div class="estructura reveal">
+    <span class="dir">📁 apellido_parcial.zip</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="dir">📁 PSD</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="file">— apellido_post.psd</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="file">— apellido_story.psd</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="file">— apellido_flyer.psd</span> <span class="note">(solo Opción A)</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="file">— apellido_banner.psd</span> <span class="note">(solo Opción B)</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="dir">📁 Exportados</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="file">— apellido_post.jpg</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="file">— apellido_story.jpg</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="file">— apellido_flyer.pdf</span> <span class="note">(solo Opción A)</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="file">— apellido_banner.jpg</span> <span class="note">(solo Opción B)</span>
+  </div>
+
+  <div class="alert reveal">
+    <span class="alert-icon">📎</span>
+    <div class="alert-text">
+      Si el trabajo es en pareja: <strong>apellido1_apellido2_parcial.zip</strong><br>
+      El enlace al Prezi debe enviarse a la docente con <strong>24 horas de anticipación</strong>.<br>
+      Los archivos exportados deben poder abrirse <strong>sin Photoshop</strong>.<br>
+      <strong> Cada estudiante debe de realizar la entrega del parcial en Google Classroom.</strong><br>
+      En el ámbito profesional del diseño gráfico y el marketing, la capacidad de comunicar y defender una
+propuesta visual ante una audiencia es tan importante como la calidad técnica del trabajo. Esta
+presentación simula una instancia real de exposición ante cliente
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Informática Aplicada I · CTT Marketing · <strong>Docente: Gianna Giupponi</strong> · Adobe Photoshop</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
